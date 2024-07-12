@@ -1,0 +1,4 @@
+﻿trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,thisRow.t,notes,buildGratings.started,buildGratings.stopped,grating_angle.expStartVal,display_gratings.started,stim_grating.started,stim_grating.stopped,stim_grayScreen.started,stim_grayScreen.stopped,display_gratings.stopped,participant,session,date,expName,psychopyVersion,frameRate,expStart,
+,,,,,,0.014434899901971221,0.014702500076964498,0,,,,,,,822690,001,2024-06-27_19h06.37.868,Gratings_vis_stim_devJG_v0.2,2024.1.5,None,2024-06-27 19h06.42.081498 -0400,
+0,0,0,0,0.030584200052544475,,,,,0.015059799887239933,0.030584200052544475,1.6981118998955935,1.6981118998955935,3.366191199980676,3.3508929000236094,822690,001,2024-06-27_19h06.37.868,Gratings_vis_stim_devJG_v0.2,2024.1.5,None,2024-06-27 19h06.42.081498 -0400,
+,,,,3.366191199980676,,,,,3.351053300080821,3.366191199980676,5.034154900116846,5.034154900116846,,,,,,,,,,

@@ -1,0 +1,1105 @@
+5.8734 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+5.8745 	INFO 	Loaded monitor calibration from ['2024_06_20 20:44']
+6.0138 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F850>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F7F0>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F640>, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001E40F3A4940>, multiSample=False, name='window1', numSamples=2, pos=[880.0, 420.0], screen=0, size=array([800, 600]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+6.0138 	EXP 	window1: backgroundImage = ''
+6.0138 	EXP 	window1: backgroundFit = 'none'
+6.0139 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0140 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0153 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0156 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0184 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0192 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0200 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0209 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0218 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0224 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0232 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0241 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0248 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0254 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0262 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0270 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0279 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0288 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0296 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0304 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0312 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0319 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0325 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0334 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0341 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0344 	DEBUG 	Uploading Texture Font fontname to graphics card
+6.0363 	DEBUG 	Upload of Texture Font fontname complete
+6.0371 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0372 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0376 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0379 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001E40C60F970>
+6.0400 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0410 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0419 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.0421 	DEBUG 	Uploading Texture Font fontname to graphics card
+6.0433 	DEBUG 	Upload of Texture Font fontname complete
+6.0444 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+6.0444 	EXP 	window1: recordFrameIntervals = False
+6.2454 	EXP 	window1: recordFrameIntervals = True
+6.4290 	EXP 	Screen (0) actual frame rate measured at 60.15Hz
+6.4291 	EXP 	window1: recordFrameIntervals = False
+6.4292 	EXP 	window1: mouseVisible = False
+6.4296 	EXP 	window1: mouseVisible = False
+6.4299 	EXP 	window1: mouseVisible = False
+6.4308 	EXP 	window1: mouseVisible = False
+6.4315 	EXP 	window1: mouseVisible = False
+6.4364 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4378 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4394 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4413 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4430 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4449 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4464 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4480 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4498 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4515 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.4519 	DEBUG 	Uploading Texture Font fontname to graphics card
+6.4528 	DEBUG 	Upload of Texture Font fontname complete
+6.4537 	EXP 	window1: mouseVisible = False
+6.4538 	EXP 	window1: mouseVisible = False
+6.4541 	EXP 	window1: mouseVisible = False
+6.4544 	EXP 	window1: mouseVisible = False
+6.4670 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+8.6602 	INFO 	keyboard.Keyboard is using iohub backend.
+8.6603 	EXP 	Gratings_vis_stim_devJG_v0.2: status = STARTED
+8.6604 	EXP 	window1: mouseVisible = False
+8.6628 	EXP 	Created stim_grating = GratingStim(__class__=<class 'psychopy.visual.grating.GratingStim'>, anchor='center', autoDraw=False, autoLog=True, blendmode='avg', color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, interpolate=True, mask=None, maskParams=None, name='stim_grating', opacity=1.0, ori=1.0, phase=array([1., 1.]), pos=array([0., 0.]), rgbPedestal=array([0., 0., 0.]), sf=array([4., 4.]), size=array([2., 2.]), tex='sin', texRes=128.0, units='height', win=Window(...))
+8.6629 	EXP 	window1: mouseVisible = False
+8.6649 	EXP 	Created stim_grayScreen = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([0., 0., 0.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image=None, interpolate=True, mask=None, maskParams=None, name='stim_grayScreen', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), texRes=128.0, units='height', win=Window(...))
+0.0191 	EXP 	Created sequence: sequential, trialTypes=1, nReps=128, seed=None
+0.0193 	EXP 	New trial (rep=0, index=0): None
+0.0351 	EXP 	stim_grating: ori = 80.0
+0.0351 	EXP 	stim_grating: autoDraw = True
+0.0351 	EXP 	stim_grating: tex = 'sin'
+2.0536 	EXP 	stim_grating: autoDraw = False
+2.0536 	EXP 	stim_grayScreen: autoDraw = True
+5.0406 	EXP 	New trial (rep=1, index=0): None
+5.0569 	EXP 	stim_grayScreen: autoDraw = False
+5.0569 	EXP 	stim_grating: autoDraw = False
+5.0569 	EXP 	stim_grayScreen: autoDraw = False
+5.0569 	EXP 	stim_grating: ori = 50.0
+5.0569 	EXP 	stim_grating: autoDraw = True
+7.0577 	EXP 	stim_grating: autoDraw = False
+7.0577 	EXP 	stim_grayScreen: autoDraw = True
+10.0446 	EXP 	New trial (rep=2, index=0): None
+10.0611 	EXP 	stim_grayScreen: autoDraw = False
+10.0611 	EXP 	stim_grating: autoDraw = False
+10.0611 	EXP 	stim_grayScreen: autoDraw = False
+10.0611 	EXP 	stim_grating: ori = 0.0
+10.0611 	EXP 	stim_grating: autoDraw = True
+12.0617 	EXP 	stim_grating: autoDraw = False
+12.0617 	EXP 	stim_grayScreen: autoDraw = True
+15.0487 	EXP 	New trial (rep=3, index=0): None
+15.0647 	EXP 	stim_grayScreen: autoDraw = False
+15.0647 	EXP 	stim_grating: autoDraw = False
+15.0647 	EXP 	stim_grayScreen: autoDraw = False
+15.0647 	EXP 	stim_grating: ori = 30.0
+15.0647 	EXP 	stim_grating: autoDraw = True
+17.0658 	EXP 	stim_grating: autoDraw = False
+17.0658 	EXP 	stim_grayScreen: autoDraw = True
+20.0526 	EXP 	New trial (rep=4, index=0): None
+20.0691 	EXP 	stim_grayScreen: autoDraw = False
+20.0691 	EXP 	stim_grating: autoDraw = False
+20.0691 	EXP 	stim_grayScreen: autoDraw = False
+20.0691 	EXP 	stim_grating: ori = 90.0
+20.0691 	EXP 	stim_grating: autoDraw = True
+22.0694 	EXP 	stim_grating: autoDraw = False
+22.0694 	EXP 	stim_grayScreen: autoDraw = True
+25.0567 	EXP 	New trial (rep=5, index=0): None
+25.0732 	EXP 	stim_grayScreen: autoDraw = False
+25.0732 	EXP 	stim_grating: autoDraw = False
+25.0732 	EXP 	stim_grayScreen: autoDraw = False
+25.0732 	EXP 	stim_grating: ori = 80.0
+25.0732 	EXP 	stim_grating: autoDraw = True
+27.0739 	EXP 	stim_grating: autoDraw = False
+27.0739 	EXP 	stim_grayScreen: autoDraw = True
+30.0610 	EXP 	New trial (rep=6, index=0): None
+30.0773 	EXP 	stim_grayScreen: autoDraw = False
+30.0773 	EXP 	stim_grating: autoDraw = False
+30.0773 	EXP 	stim_grayScreen: autoDraw = False
+30.0773 	EXP 	stim_grating: ori = 40.0
+30.0773 	EXP 	stim_grating: autoDraw = True
+32.0782 	EXP 	stim_grating: autoDraw = False
+32.0782 	EXP 	stim_grayScreen: autoDraw = True
+35.0647 	EXP 	New trial (rep=7, index=0): None
+35.0813 	EXP 	stim_grayScreen: autoDraw = False
+35.0813 	EXP 	stim_grating: autoDraw = False
+35.0813 	EXP 	stim_grayScreen: autoDraw = False
+35.0813 	EXP 	stim_grating: ori = 80.0
+35.0813 	EXP 	stim_grating: autoDraw = True
+37.0818 	EXP 	stim_grating: autoDraw = False
+37.0818 	EXP 	stim_grayScreen: autoDraw = True
+40.0688 	EXP 	New trial (rep=8, index=0): None
+40.0849 	EXP 	stim_grayScreen: autoDraw = False
+40.0849 	EXP 	stim_grating: autoDraw = False
+40.0849 	EXP 	stim_grayScreen: autoDraw = False
+40.0849 	EXP 	stim_grating: ori = 70.0
+40.0849 	EXP 	stim_grating: autoDraw = True
+42.0859 	EXP 	stim_grating: autoDraw = False
+42.0859 	EXP 	stim_grayScreen: autoDraw = True
+45.0729 	EXP 	New trial (rep=9, index=0): None
+45.0894 	EXP 	stim_grayScreen: autoDraw = False
+45.0894 	EXP 	stim_grating: autoDraw = False
+45.0894 	EXP 	stim_grayScreen: autoDraw = False
+45.0894 	EXP 	stim_grating: ori = 70.0
+45.0894 	EXP 	stim_grating: autoDraw = True
+47.0901 	EXP 	stim_grating: autoDraw = False
+47.0901 	EXP 	stim_grayScreen: autoDraw = True
+50.0769 	EXP 	New trial (rep=10, index=0): None
+50.0936 	EXP 	stim_grayScreen: autoDraw = False
+50.0936 	EXP 	stim_grating: autoDraw = False
+50.0936 	EXP 	stim_grayScreen: autoDraw = False
+50.0936 	EXP 	stim_grating: ori = 50.0
+50.0936 	EXP 	stim_grating: autoDraw = True
+52.0943 	EXP 	stim_grating: autoDraw = False
+52.0943 	EXP 	stim_grayScreen: autoDraw = True
+55.0810 	EXP 	New trial (rep=11, index=0): None
+55.0974 	EXP 	stim_grayScreen: autoDraw = False
+55.0974 	EXP 	stim_grating: autoDraw = False
+55.0974 	EXP 	stim_grayScreen: autoDraw = False
+55.0974 	EXP 	stim_grating: ori = 20.0
+55.0974 	EXP 	stim_grating: autoDraw = True
+57.0980 	EXP 	stim_grating: autoDraw = False
+57.0980 	EXP 	stim_grayScreen: autoDraw = True
+60.0850 	EXP 	New trial (rep=12, index=0): None
+60.1015 	EXP 	stim_grayScreen: autoDraw = False
+60.1015 	EXP 	stim_grating: autoDraw = False
+60.1015 	EXP 	stim_grayScreen: autoDraw = False
+60.1015 	EXP 	stim_grating: ori = 0.0
+60.1015 	EXP 	stim_grating: autoDraw = True
+62.1022 	EXP 	stim_grating: autoDraw = False
+62.1022 	EXP 	stim_grayScreen: autoDraw = True
+65.0908 	EXP 	New trial (rep=13, index=0): None
+65.1054 	EXP 	stim_grayScreen: autoDraw = False
+65.1054 	EXP 	stim_grating: autoDraw = False
+65.1054 	EXP 	stim_grayScreen: autoDraw = False
+65.1054 	EXP 	stim_grating: ori = 90.0
+65.1054 	EXP 	stim_grating: autoDraw = True
+67.1063 	EXP 	stim_grating: autoDraw = False
+67.1063 	EXP 	stim_grayScreen: autoDraw = True
+70.0932 	EXP 	New trial (rep=14, index=0): None
+70.1098 	EXP 	stim_grayScreen: autoDraw = False
+70.1098 	EXP 	stim_grating: autoDraw = False
+70.1098 	EXP 	stim_grayScreen: autoDraw = False
+70.1098 	EXP 	stim_grating: ori = 30.0
+70.1098 	EXP 	stim_grating: autoDraw = True
+72.1105 	EXP 	stim_grating: autoDraw = False
+72.1105 	EXP 	stim_grayScreen: autoDraw = True
+75.0972 	EXP 	New trial (rep=15, index=0): None
+75.1137 	EXP 	stim_grayScreen: autoDraw = False
+75.1137 	EXP 	stim_grating: autoDraw = False
+75.1137 	EXP 	stim_grayScreen: autoDraw = False
+75.1137 	EXP 	stim_grating: ori = 20.0
+75.1137 	EXP 	stim_grating: autoDraw = True
+77.1143 	EXP 	stim_grating: autoDraw = False
+77.1143 	EXP 	stim_grayScreen: autoDraw = True
+80.1011 	EXP 	New trial (rep=16, index=0): None
+80.1177 	EXP 	stim_grayScreen: autoDraw = False
+80.1177 	EXP 	stim_grating: autoDraw = False
+80.1177 	EXP 	stim_grayScreen: autoDraw = False
+80.1177 	EXP 	stim_grating: ori = 70.0
+80.1177 	EXP 	stim_grating: autoDraw = True
+82.1183 	EXP 	stim_grating: autoDraw = False
+82.1183 	EXP 	stim_grayScreen: autoDraw = True
+85.1052 	EXP 	New trial (rep=17, index=0): None
+85.1216 	EXP 	stim_grayScreen: autoDraw = False
+85.1216 	EXP 	stim_grating: autoDraw = False
+85.1216 	EXP 	stim_grayScreen: autoDraw = False
+85.1216 	EXP 	stim_grating: ori = 40.0
+85.1216 	EXP 	stim_grating: autoDraw = True
+87.1223 	EXP 	stim_grating: autoDraw = False
+87.1223 	EXP 	stim_grayScreen: autoDraw = True
+90.1093 	EXP 	New trial (rep=18, index=0): None
+90.1260 	EXP 	stim_grayScreen: autoDraw = False
+90.1260 	EXP 	stim_grating: autoDraw = False
+90.1260 	EXP 	stim_grayScreen: autoDraw = False
+90.1260 	EXP 	stim_grating: ori = 30.0
+90.1260 	EXP 	stim_grating: autoDraw = True
+92.1266 	EXP 	stim_grating: autoDraw = False
+92.1266 	EXP 	stim_grayScreen: autoDraw = True
+95.1134 	EXP 	New trial (rep=19, index=0): None
+95.1299 	EXP 	stim_grayScreen: autoDraw = False
+95.1299 	EXP 	stim_grating: autoDraw = False
+95.1299 	EXP 	stim_grayScreen: autoDraw = False
+95.1299 	EXP 	stim_grating: ori = 0.0
+95.1299 	EXP 	stim_grating: autoDraw = True
+97.1306 	EXP 	stim_grating: autoDraw = False
+97.1306 	EXP 	stim_grayScreen: autoDraw = True
+100.1175 	EXP 	New trial (rep=20, index=0): None
+100.1337 	EXP 	stim_grayScreen: autoDraw = False
+100.1337 	EXP 	stim_grating: autoDraw = False
+100.1337 	EXP 	stim_grayScreen: autoDraw = False
+100.1337 	EXP 	stim_grating: ori = 50.0
+100.1337 	EXP 	stim_grating: autoDraw = True
+102.1346 	EXP 	stim_grating: autoDraw = False
+102.1346 	EXP 	stim_grayScreen: autoDraw = True
+105.1216 	EXP 	New trial (rep=21, index=0): None
+105.1380 	EXP 	stim_grayScreen: autoDraw = False
+105.1380 	EXP 	stim_grating: autoDraw = False
+105.1380 	EXP 	stim_grayScreen: autoDraw = False
+105.1380 	EXP 	stim_grating: ori = 50.0
+105.1380 	EXP 	stim_grating: autoDraw = True
+107.1385 	EXP 	stim_grating: autoDraw = False
+107.1385 	EXP 	stim_grayScreen: autoDraw = True
+110.1260 	EXP 	New trial (rep=22, index=0): None
+110.1421 	EXP 	stim_grayScreen: autoDraw = False
+110.1421 	EXP 	stim_grating: autoDraw = False
+110.1421 	EXP 	stim_grayScreen: autoDraw = False
+110.1421 	EXP 	stim_grating: ori = 70.0
+110.1421 	EXP 	stim_grating: autoDraw = True
+112.1428 	EXP 	stim_grating: autoDraw = False
+112.1428 	EXP 	stim_grayScreen: autoDraw = True
+115.1295 	EXP 	New trial (rep=23, index=0): None
+115.1461 	EXP 	stim_grayScreen: autoDraw = False
+115.1461 	EXP 	stim_grating: autoDraw = False
+115.1461 	EXP 	stim_grayScreen: autoDraw = False
+115.1461 	EXP 	stim_grating: ori = 80.0
+115.1461 	EXP 	stim_grating: autoDraw = True
+117.1466 	EXP 	stim_grating: autoDraw = False
+117.1466 	EXP 	stim_grayScreen: autoDraw = True
+120.1336 	EXP 	New trial (rep=24, index=0): None
+120.1501 	EXP 	stim_grayScreen: autoDraw = False
+120.1501 	EXP 	stim_grating: autoDraw = False
+120.1501 	EXP 	stim_grayScreen: autoDraw = False
+120.1501 	EXP 	stim_grating: ori = 20.0
+120.1501 	EXP 	stim_grating: autoDraw = True
+122.1508 	EXP 	stim_grating: autoDraw = False
+122.1508 	EXP 	stim_grayScreen: autoDraw = True
+125.1377 	EXP 	New trial (rep=25, index=0): None
+125.1542 	EXP 	stim_grayScreen: autoDraw = False
+125.1542 	EXP 	stim_grating: autoDraw = False
+125.1542 	EXP 	stim_grayScreen: autoDraw = False
+125.1542 	EXP 	stim_grating: ori = 90.0
+125.1542 	EXP 	stim_grating: autoDraw = True
+127.1548 	EXP 	stim_grating: autoDraw = False
+127.1548 	EXP 	stim_grayScreen: autoDraw = True
+130.1417 	EXP 	New trial (rep=26, index=0): None
+130.1585 	EXP 	stim_grayScreen: autoDraw = False
+130.1585 	EXP 	stim_grating: autoDraw = False
+130.1585 	EXP 	stim_grayScreen: autoDraw = False
+130.1585 	EXP 	stim_grating: ori = 90.0
+130.1585 	EXP 	stim_grating: autoDraw = True
+132.1590 	EXP 	stim_grating: autoDraw = False
+132.1590 	EXP 	stim_grayScreen: autoDraw = True
+135.1454 	EXP 	New trial (rep=27, index=0): None
+135.1621 	EXP 	stim_grayScreen: autoDraw = False
+135.1621 	EXP 	stim_grating: autoDraw = False
+135.1621 	EXP 	stim_grayScreen: autoDraw = False
+135.1621 	EXP 	stim_grating: ori = 80.0
+135.1621 	EXP 	stim_grating: autoDraw = True
+137.1629 	EXP 	stim_grating: autoDraw = False
+137.1629 	EXP 	stim_grayScreen: autoDraw = True
+140.1499 	EXP 	New trial (rep=28, index=0): None
+140.1658 	EXP 	stim_grayScreen: autoDraw = False
+140.1658 	EXP 	stim_grating: autoDraw = False
+140.1658 	EXP 	stim_grayScreen: autoDraw = False
+140.1658 	EXP 	stim_grating: ori = 70.0
+140.1658 	EXP 	stim_grating: autoDraw = True
+142.1670 	EXP 	stim_grating: autoDraw = False
+142.1670 	EXP 	stim_grayScreen: autoDraw = True
+145.1539 	EXP 	New trial (rep=29, index=0): None
+145.1703 	EXP 	stim_grayScreen: autoDraw = False
+145.1703 	EXP 	stim_grating: autoDraw = False
+145.1703 	EXP 	stim_grayScreen: autoDraw = False
+145.1703 	EXP 	stim_grating: ori = 0.0
+145.1703 	EXP 	stim_grating: autoDraw = True
+147.1710 	EXP 	stim_grating: autoDraw = False
+147.1710 	EXP 	stim_grayScreen: autoDraw = True
+150.1578 	EXP 	New trial (rep=30, index=0): None
+150.1747 	EXP 	stim_grayScreen: autoDraw = False
+150.1747 	EXP 	stim_grating: autoDraw = False
+150.1747 	EXP 	stim_grayScreen: autoDraw = False
+150.1747 	EXP 	stim_grating: ori = 80.0
+150.1747 	EXP 	stim_grating: autoDraw = True
+152.1754 	EXP 	stim_grating: autoDraw = False
+152.1754 	EXP 	stim_grayScreen: autoDraw = True
+155.1619 	EXP 	New trial (rep=31, index=0): None
+155.1785 	EXP 	stim_grayScreen: autoDraw = False
+155.1785 	EXP 	stim_grating: autoDraw = False
+155.1785 	EXP 	stim_grayScreen: autoDraw = False
+155.1785 	EXP 	stim_grating: ori = 50.0
+155.1785 	EXP 	stim_grating: autoDraw = True
+157.1792 	EXP 	stim_grating: autoDraw = False
+157.1792 	EXP 	stim_grayScreen: autoDraw = True
+160.1660 	EXP 	New trial (rep=32, index=0): None
+160.1823 	EXP 	stim_grayScreen: autoDraw = False
+160.1823 	EXP 	stim_grating: autoDraw = False
+160.1823 	EXP 	stim_grayScreen: autoDraw = False
+160.1823 	EXP 	stim_grating: ori = 0.0
+160.1823 	EXP 	stim_grating: autoDraw = True
+162.1832 	EXP 	stim_grating: autoDraw = False
+162.1832 	EXP 	stim_grayScreen: autoDraw = True
+165.1700 	EXP 	New trial (rep=33, index=0): None
+165.1864 	EXP 	stim_grayScreen: autoDraw = False
+165.1864 	EXP 	stim_grating: autoDraw = False
+165.1864 	EXP 	stim_grayScreen: autoDraw = False
+165.1864 	EXP 	stim_grating: ori = 30.0
+165.1864 	EXP 	stim_grating: autoDraw = True
+167.1873 	EXP 	stim_grating: autoDraw = False
+167.1873 	EXP 	stim_grayScreen: autoDraw = True
+170.1740 	EXP 	New trial (rep=34, index=0): None
+170.1908 	EXP 	stim_grayScreen: autoDraw = False
+170.1908 	EXP 	stim_grating: autoDraw = False
+170.1908 	EXP 	stim_grayScreen: autoDraw = False
+170.1908 	EXP 	stim_grating: ori = 0.0
+170.1908 	EXP 	stim_grating: autoDraw = True
+172.1915 	EXP 	stim_grating: autoDraw = False
+172.1915 	EXP 	stim_grayScreen: autoDraw = True
+175.1780 	EXP 	New trial (rep=35, index=0): None
+175.1946 	EXP 	stim_grayScreen: autoDraw = False
+175.1946 	EXP 	stim_grating: autoDraw = False
+175.1946 	EXP 	stim_grayScreen: autoDraw = False
+175.1946 	EXP 	stim_grating: ori = 80.0
+175.1946 	EXP 	stim_grating: autoDraw = True
+177.1954 	EXP 	stim_grating: autoDraw = False
+177.1954 	EXP 	stim_grayScreen: autoDraw = True
+180.1824 	EXP 	New trial (rep=36, index=0): None
+180.1985 	EXP 	stim_grayScreen: autoDraw = False
+180.1985 	EXP 	stim_grating: autoDraw = False
+180.1985 	EXP 	stim_grayScreen: autoDraw = False
+180.1985 	EXP 	stim_grating: ori = 20.0
+180.1985 	EXP 	stim_grating: autoDraw = True
+182.1994 	EXP 	stim_grating: autoDraw = False
+182.1994 	EXP 	stim_grayScreen: autoDraw = True
+185.1862 	EXP 	New trial (rep=37, index=0): None
+185.2027 	EXP 	stim_grayScreen: autoDraw = False
+185.2027 	EXP 	stim_grating: autoDraw = False
+185.2027 	EXP 	stim_grayScreen: autoDraw = False
+185.2027 	EXP 	stim_grating: ori = 40.0
+185.2027 	EXP 	stim_grating: autoDraw = True
+187.2034 	EXP 	stim_grating: autoDraw = False
+187.2034 	EXP 	stim_grayScreen: autoDraw = True
+190.1901 	EXP 	New trial (rep=38, index=0): None
+190.2070 	EXP 	stim_grayScreen: autoDraw = False
+190.2070 	EXP 	stim_grating: autoDraw = False
+190.2070 	EXP 	stim_grayScreen: autoDraw = False
+190.2070 	EXP 	stim_grating: ori = 70.0
+190.2070 	EXP 	stim_grating: autoDraw = True
+192.2077 	EXP 	stim_grating: autoDraw = False
+192.2077 	EXP 	stim_grayScreen: autoDraw = True
+195.1942 	EXP 	New trial (rep=39, index=0): None
+195.2108 	EXP 	stim_grayScreen: autoDraw = False
+195.2108 	EXP 	stim_grating: autoDraw = False
+195.2108 	EXP 	stim_grayScreen: autoDraw = False
+195.2108 	EXP 	stim_grating: ori = 80.0
+195.2108 	EXP 	stim_grating: autoDraw = True
+197.2114 	EXP 	stim_grating: autoDraw = False
+197.2114 	EXP 	stim_grayScreen: autoDraw = True
+200.1987 	EXP 	New trial (rep=40, index=0): None
+200.2147 	EXP 	stim_grayScreen: autoDraw = False
+200.2147 	EXP 	stim_grating: autoDraw = False
+200.2147 	EXP 	stim_grayScreen: autoDraw = False
+200.2147 	EXP 	stim_grating: ori = 90.0
+200.2147 	EXP 	stim_grating: autoDraw = True
+202.2154 	EXP 	stim_grating: autoDraw = False
+202.2154 	EXP 	stim_grayScreen: autoDraw = True
+205.2031 	EXP 	New trial (rep=41, index=0): None
+205.2151 	EXP 	stim_grayScreen: autoDraw = False
+205.2151 	EXP 	stim_grating: autoDraw = False
+205.2151 	EXP 	stim_grayScreen: autoDraw = False
+205.2151 	EXP 	stim_grating: ori = 80.0
+205.2151 	EXP 	stim_grating: autoDraw = True
+207.2166 	EXP 	stim_grating: autoDraw = False
+207.2166 	EXP 	stim_grayScreen: autoDraw = True
+210.2090 	EXP 	New trial (rep=42, index=0): None
+210.2202 	EXP 	stim_grayScreen: autoDraw = False
+210.2202 	EXP 	stim_grating: autoDraw = False
+210.2202 	EXP 	stim_grayScreen: autoDraw = False
+210.2202 	EXP 	stim_grating: ori = 70.0
+210.2202 	EXP 	stim_grating: autoDraw = True
+212.2228 	EXP 	stim_grating: autoDraw = False
+212.2228 	EXP 	stim_grayScreen: autoDraw = True
+215.2109 	EXP 	New trial (rep=43, index=0): None
+215.2261 	EXP 	stim_grayScreen: autoDraw = False
+215.2261 	EXP 	stim_grating: autoDraw = False
+215.2261 	EXP 	stim_grayScreen: autoDraw = False
+215.2261 	EXP 	stim_grating: ori = 50.0
+215.2261 	EXP 	stim_grating: autoDraw = True
+217.2285 	EXP 	stim_grating: autoDraw = False
+217.2285 	EXP 	stim_grayScreen: autoDraw = True
+220.2151 	EXP 	New trial (rep=44, index=0): None
+220.2303 	EXP 	stim_grayScreen: autoDraw = False
+220.2303 	EXP 	stim_grating: autoDraw = False
+220.2303 	EXP 	stim_grayScreen: autoDraw = False
+220.2303 	EXP 	stim_grating: ori = 20.0
+220.2303 	EXP 	stim_grating: autoDraw = True
+222.2318 	EXP 	stim_grating: autoDraw = False
+222.2318 	EXP 	stim_grayScreen: autoDraw = True
+225.2190 	EXP 	New trial (rep=45, index=0): None
+225.2342 	EXP 	stim_grayScreen: autoDraw = False
+225.2342 	EXP 	stim_grating: autoDraw = False
+225.2342 	EXP 	stim_grayScreen: autoDraw = False
+225.2342 	EXP 	stim_grating: ori = 90.0
+225.2342 	EXP 	stim_grating: autoDraw = True
+227.2351 	EXP 	stim_grating: autoDraw = False
+227.2351 	EXP 	stim_grayScreen: autoDraw = True
+230.2229 	EXP 	New trial (rep=46, index=0): None
+230.2392 	EXP 	stim_grayScreen: autoDraw = False
+230.2392 	EXP 	stim_grating: autoDraw = False
+230.2392 	EXP 	stim_grayScreen: autoDraw = False
+230.2392 	EXP 	stim_grating: ori = 70.0
+230.2392 	EXP 	stim_grating: autoDraw = True
+232.2398 	EXP 	stim_grating: autoDraw = False
+232.2398 	EXP 	stim_grayScreen: autoDraw = True
+235.2270 	EXP 	New trial (rep=47, index=0): None
+235.2424 	EXP 	stim_grayScreen: autoDraw = False
+235.2424 	EXP 	stim_grating: autoDraw = False
+235.2424 	EXP 	stim_grayScreen: autoDraw = False
+235.2424 	EXP 	stim_grating: ori = 80.0
+235.2424 	EXP 	stim_grating: autoDraw = True
+237.2440 	EXP 	stim_grating: autoDraw = False
+237.2440 	EXP 	stim_grayScreen: autoDraw = True
+240.2808 	EXP 	New trial (rep=48, index=0): None
+240.2971 	EXP 	stim_grayScreen: autoDraw = False
+240.2971 	EXP 	stim_grating: autoDraw = False
+240.2971 	EXP 	stim_grayScreen: autoDraw = False
+240.2971 	EXP 	stim_grating: ori = 90.0
+240.2971 	EXP 	stim_grating: autoDraw = True
+242.2980 	EXP 	stim_grating: autoDraw = False
+242.2980 	EXP 	stim_grayScreen: autoDraw = True
+245.2853 	EXP 	New trial (rep=49, index=0): None
+245.3013 	EXP 	stim_grayScreen: autoDraw = False
+245.3013 	EXP 	stim_grating: autoDraw = False
+245.3013 	EXP 	stim_grayScreen: autoDraw = False
+245.3013 	EXP 	stim_grating: ori = 20.0
+245.3013 	EXP 	stim_grating: autoDraw = True
+247.3020 	EXP 	stim_grating: autoDraw = False
+247.3020 	EXP 	stim_grayScreen: autoDraw = True
+250.2905 	EXP 	New trial (rep=50, index=0): None
+250.3056 	EXP 	stim_grayScreen: autoDraw = False
+250.3056 	EXP 	stim_grating: autoDraw = False
+250.3056 	EXP 	stim_grayScreen: autoDraw = False
+250.3056 	EXP 	stim_grating: ori = 50.0
+250.3056 	EXP 	stim_grating: autoDraw = True
+252.3060 	EXP 	stim_grating: autoDraw = False
+252.3060 	EXP 	stim_grayScreen: autoDraw = True
+255.2934 	EXP 	New trial (rep=51, index=0): None
+255.3093 	EXP 	stim_grayScreen: autoDraw = False
+255.3093 	EXP 	stim_grating: autoDraw = False
+255.3093 	EXP 	stim_grayScreen: autoDraw = False
+255.3093 	EXP 	stim_grating: ori = 80.0
+255.3093 	EXP 	stim_grating: autoDraw = True
+257.3101 	EXP 	stim_grating: autoDraw = False
+257.3101 	EXP 	stim_grayScreen: autoDraw = True
+260.2975 	EXP 	New trial (rep=52, index=0): None
+260.3135 	EXP 	stim_grayScreen: autoDraw = False
+260.3135 	EXP 	stim_grating: autoDraw = False
+260.3135 	EXP 	stim_grayScreen: autoDraw = False
+260.3135 	EXP 	stim_grating: ori = 50.0
+260.3135 	EXP 	stim_grating: autoDraw = True
+262.3142 	EXP 	stim_grating: autoDraw = False
+262.3142 	EXP 	stim_grayScreen: autoDraw = True
+265.3015 	EXP 	New trial (rep=53, index=0): None
+265.3175 	EXP 	stim_grayScreen: autoDraw = False
+265.3175 	EXP 	stim_grating: autoDraw = False
+265.3175 	EXP 	stim_grayScreen: autoDraw = False
+265.3175 	EXP 	stim_grating: ori = 80.0
+265.3175 	EXP 	stim_grating: autoDraw = True
+267.3181 	EXP 	stim_grating: autoDraw = False
+267.3181 	EXP 	stim_grayScreen: autoDraw = True
+270.3056 	EXP 	New trial (rep=54, index=0): None
+270.3217 	EXP 	stim_grayScreen: autoDraw = False
+270.3217 	EXP 	stim_grating: autoDraw = False
+270.3217 	EXP 	stim_grayScreen: autoDraw = False
+270.3217 	EXP 	stim_grating: ori = 0.0
+270.3217 	EXP 	stim_grating: autoDraw = True
+272.3221 	EXP 	stim_grating: autoDraw = False
+272.3221 	EXP 	stim_grayScreen: autoDraw = True
+275.3097 	EXP 	New trial (rep=55, index=0): None
+275.3256 	EXP 	stim_grayScreen: autoDraw = False
+275.3256 	EXP 	stim_grating: autoDraw = False
+275.3256 	EXP 	stim_grayScreen: autoDraw = False
+275.3256 	EXP 	stim_grating: ori = 30.0
+275.3256 	EXP 	stim_grating: autoDraw = True
+277.3261 	EXP 	stim_grating: autoDraw = False
+277.3261 	EXP 	stim_grayScreen: autoDraw = True
+280.3130 	EXP 	New trial (rep=56, index=0): None
+280.3295 	EXP 	stim_grayScreen: autoDraw = False
+280.3295 	EXP 	stim_grating: autoDraw = False
+280.3295 	EXP 	stim_grayScreen: autoDraw = False
+280.3295 	EXP 	stim_grating: ori = 30.0
+280.3295 	EXP 	stim_grating: autoDraw = True
+282.3303 	EXP 	stim_grating: autoDraw = False
+282.3303 	EXP 	stim_grayScreen: autoDraw = True
+285.3177 	EXP 	New trial (rep=57, index=0): None
+285.3336 	EXP 	stim_grayScreen: autoDraw = False
+285.3336 	EXP 	stim_grating: autoDraw = False
+285.3336 	EXP 	stim_grayScreen: autoDraw = False
+285.3336 	EXP 	stim_grating: ori = 90.0
+285.3336 	EXP 	stim_grating: autoDraw = True
+287.3345 	EXP 	stim_grating: autoDraw = False
+287.3345 	EXP 	stim_grayScreen: autoDraw = True
+290.3224 	EXP 	New trial (rep=58, index=0): None
+290.3384 	EXP 	stim_grayScreen: autoDraw = False
+290.3384 	EXP 	stim_grating: autoDraw = False
+290.3384 	EXP 	stim_grayScreen: autoDraw = False
+290.3384 	EXP 	stim_grating: ori = 90.0
+290.3384 	EXP 	stim_grating: autoDraw = True
+292.3384 	EXP 	stim_grating: autoDraw = False
+292.3384 	EXP 	stim_grayScreen: autoDraw = True
+295.3603 	EXP 	New trial (rep=59, index=0): None
+295.3757 	EXP 	stim_grayScreen: autoDraw = False
+295.3757 	EXP 	stim_grating: autoDraw = False
+295.3757 	EXP 	stim_grayScreen: autoDraw = False
+295.3757 	EXP 	stim_grating: ori = 50.0
+295.3757 	EXP 	stim_grating: autoDraw = True
+297.3757 	EXP 	stim_grating: autoDraw = False
+297.3757 	EXP 	stim_grayScreen: autoDraw = True
+300.3624 	EXP 	New trial (rep=60, index=0): None
+300.3790 	EXP 	stim_grayScreen: autoDraw = False
+300.3790 	EXP 	stim_grating: autoDraw = False
+300.3790 	EXP 	stim_grayScreen: autoDraw = False
+300.3790 	EXP 	stim_grating: ori = 40.0
+300.3790 	EXP 	stim_grating: autoDraw = True
+302.3798 	EXP 	stim_grating: autoDraw = False
+302.3798 	EXP 	stim_grayScreen: autoDraw = True
+305.3664 	EXP 	New trial (rep=61, index=0): None
+305.3832 	EXP 	stim_grayScreen: autoDraw = False
+305.3832 	EXP 	stim_grating: autoDraw = False
+305.3832 	EXP 	stim_grayScreen: autoDraw = False
+305.3832 	EXP 	stim_grating: ori = 70.0
+305.3832 	EXP 	stim_grating: autoDraw = True
+307.3840 	EXP 	stim_grating: autoDraw = False
+307.3840 	EXP 	stim_grayScreen: autoDraw = True
+310.3713 	EXP 	New trial (rep=62, index=0): None
+310.3874 	EXP 	stim_grayScreen: autoDraw = False
+310.3874 	EXP 	stim_grating: autoDraw = False
+310.3874 	EXP 	stim_grayScreen: autoDraw = False
+310.3874 	EXP 	stim_grating: ori = 50.0
+310.3874 	EXP 	stim_grating: autoDraw = True
+312.3880 	EXP 	stim_grating: autoDraw = False
+312.3880 	EXP 	stim_grayScreen: autoDraw = True
+315.3753 	EXP 	New trial (rep=63, index=0): None
+315.3914 	EXP 	stim_grayScreen: autoDraw = False
+315.3914 	EXP 	stim_grating: autoDraw = False
+315.3914 	EXP 	stim_grayScreen: autoDraw = False
+315.3914 	EXP 	stim_grating: ori = 20.0
+315.3914 	EXP 	stim_grating: autoDraw = True
+317.3920 	EXP 	stim_grating: autoDraw = False
+317.3920 	EXP 	stim_grayScreen: autoDraw = True
+320.3792 	EXP 	New trial (rep=64, index=0): None
+320.3952 	EXP 	stim_grayScreen: autoDraw = False
+320.3952 	EXP 	stim_grating: autoDraw = False
+320.3952 	EXP 	stim_grayScreen: autoDraw = False
+320.3952 	EXP 	stim_grating: ori = 0.0
+320.3952 	EXP 	stim_grating: autoDraw = True
+322.3958 	EXP 	stim_grating: autoDraw = False
+322.3958 	EXP 	stim_grayScreen: autoDraw = True
+325.3826 	EXP 	New trial (rep=65, index=0): None
+325.3992 	EXP 	stim_grayScreen: autoDraw = False
+325.3992 	EXP 	stim_grating: autoDraw = False
+325.3992 	EXP 	stim_grayScreen: autoDraw = False
+325.3992 	EXP 	stim_grating: ori = 0.0
+325.3992 	EXP 	stim_grating: autoDraw = True
+327.4000 	EXP 	stim_grating: autoDraw = False
+327.4000 	EXP 	stim_grayScreen: autoDraw = True
+330.3875 	EXP 	New trial (rep=66, index=0): None
+330.4037 	EXP 	stim_grayScreen: autoDraw = False
+330.4037 	EXP 	stim_grating: autoDraw = False
+330.4037 	EXP 	stim_grayScreen: autoDraw = False
+330.4037 	EXP 	stim_grating: ori = 0.0
+330.4037 	EXP 	stim_grating: autoDraw = True
+332.4041 	EXP 	stim_grating: autoDraw = False
+332.4041 	EXP 	stim_grayScreen: autoDraw = True
+335.3914 	EXP 	New trial (rep=67, index=0): None
+335.4075 	EXP 	stim_grayScreen: autoDraw = False
+335.4075 	EXP 	stim_grating: autoDraw = False
+335.4075 	EXP 	stim_grayScreen: autoDraw = False
+335.4075 	EXP 	stim_grating: ori = 40.0
+335.4075 	EXP 	stim_grating: autoDraw = True
+337.4081 	EXP 	stim_grating: autoDraw = False
+337.4081 	EXP 	stim_grayScreen: autoDraw = True
+340.3956 	EXP 	New trial (rep=68, index=0): None
+340.4116 	EXP 	stim_grayScreen: autoDraw = False
+340.4116 	EXP 	stim_grating: autoDraw = False
+340.4116 	EXP 	stim_grayScreen: autoDraw = False
+340.4116 	EXP 	stim_grating: ori = 70.0
+340.4116 	EXP 	stim_grating: autoDraw = True
+342.4123 	EXP 	stim_grating: autoDraw = False
+342.4123 	EXP 	stim_grayScreen: autoDraw = True
+345.3989 	EXP 	New trial (rep=69, index=0): None
+345.4156 	EXP 	stim_grayScreen: autoDraw = False
+345.4156 	EXP 	stim_grating: autoDraw = False
+345.4156 	EXP 	stim_grayScreen: autoDraw = False
+345.4156 	EXP 	stim_grating: ori = 90.0
+345.4156 	EXP 	stim_grating: autoDraw = True
+347.4163 	EXP 	stim_grating: autoDraw = False
+347.4163 	EXP 	stim_grayScreen: autoDraw = True
+350.4045 	EXP 	New trial (rep=70, index=0): None
+350.4196 	EXP 	stim_grayScreen: autoDraw = False
+350.4196 	EXP 	stim_grating: autoDraw = False
+350.4196 	EXP 	stim_grayScreen: autoDraw = False
+350.4196 	EXP 	stim_grating: ori = 40.0
+350.4196 	EXP 	stim_grating: autoDraw = True
+352.4205 	EXP 	stim_grating: autoDraw = False
+352.4205 	EXP 	stim_grayScreen: autoDraw = True
+355.4070 	EXP 	New trial (rep=71, index=0): None
+355.4239 	EXP 	stim_grayScreen: autoDraw = False
+355.4239 	EXP 	stim_grating: autoDraw = False
+355.4239 	EXP 	stim_grayScreen: autoDraw = False
+355.4239 	EXP 	stim_grating: ori = 50.0
+355.4239 	EXP 	stim_grating: autoDraw = True
+357.4577 	EXP 	stim_grating: autoDraw = False
+357.4577 	EXP 	stim_grayScreen: autoDraw = True
+360.4446 	EXP 	New trial (rep=72, index=0): None
+360.4610 	EXP 	stim_grayScreen: autoDraw = False
+360.4610 	EXP 	stim_grating: autoDraw = False
+360.4610 	EXP 	stim_grayScreen: autoDraw = False
+360.4610 	EXP 	stim_grating: ori = 0.0
+360.4610 	EXP 	stim_grating: autoDraw = True
+362.4617 	EXP 	stim_grating: autoDraw = False
+362.4617 	EXP 	stim_grayScreen: autoDraw = True
+365.4492 	EXP 	New trial (rep=73, index=0): None
+365.4652 	EXP 	stim_grayScreen: autoDraw = False
+365.4652 	EXP 	stim_grating: autoDraw = False
+365.4652 	EXP 	stim_grayScreen: autoDraw = False
+365.4652 	EXP 	stim_grating: ori = 80.0
+365.4652 	EXP 	stim_grating: autoDraw = True
+367.4659 	EXP 	stim_grating: autoDraw = False
+367.4659 	EXP 	stim_grayScreen: autoDraw = True
+370.4524 	EXP 	New trial (rep=74, index=0): None
+370.4691 	EXP 	stim_grayScreen: autoDraw = False
+370.4691 	EXP 	stim_grating: autoDraw = False
+370.4691 	EXP 	stim_grayScreen: autoDraw = False
+370.4691 	EXP 	stim_grating: ori = 50.0
+370.4691 	EXP 	stim_grating: autoDraw = True
+372.4698 	EXP 	stim_grating: autoDraw = False
+372.4698 	EXP 	stim_grayScreen: autoDraw = True
+375.4576 	EXP 	New trial (rep=75, index=0): None
+375.4735 	EXP 	stim_grayScreen: autoDraw = False
+375.4735 	EXP 	stim_grating: autoDraw = False
+375.4735 	EXP 	stim_grayScreen: autoDraw = False
+375.4735 	EXP 	stim_grating: ori = 90.0
+375.4735 	EXP 	stim_grating: autoDraw = True
+377.4740 	EXP 	stim_grating: autoDraw = False
+377.4740 	EXP 	stim_grayScreen: autoDraw = True
+380.4613 	EXP 	New trial (rep=76, index=0): None
+380.4772 	EXP 	stim_grayScreen: autoDraw = False
+380.4772 	EXP 	stim_grating: autoDraw = False
+380.4772 	EXP 	stim_grayScreen: autoDraw = False
+380.4772 	EXP 	stim_grating: ori = 90.0
+380.4772 	EXP 	stim_grating: autoDraw = True
+382.4780 	EXP 	stim_grating: autoDraw = False
+382.4780 	EXP 	stim_grayScreen: autoDraw = True
+385.4642 	EXP 	New trial (rep=77, index=0): None
+385.4814 	EXP 	stim_grayScreen: autoDraw = False
+385.4814 	EXP 	stim_grating: autoDraw = False
+385.4814 	EXP 	stim_grayScreen: autoDraw = False
+385.4814 	EXP 	stim_grating: ori = 90.0
+385.4814 	EXP 	stim_grating: autoDraw = True
+387.4820 	EXP 	stim_grating: autoDraw = False
+387.4820 	EXP 	stim_grayScreen: autoDraw = True
+390.4694 	EXP 	New trial (rep=78, index=0): None
+390.4853 	EXP 	stim_grayScreen: autoDraw = False
+390.4853 	EXP 	stim_grating: autoDraw = False
+390.4853 	EXP 	stim_grayScreen: autoDraw = False
+390.4853 	EXP 	stim_grating: ori = 30.0
+390.4853 	EXP 	stim_grating: autoDraw = True
+392.4861 	EXP 	stim_grating: autoDraw = False
+392.4861 	EXP 	stim_grayScreen: autoDraw = True
+395.4735 	EXP 	New trial (rep=79, index=0): None
+395.4897 	EXP 	stim_grayScreen: autoDraw = False
+395.4897 	EXP 	stim_grating: autoDraw = False
+395.4897 	EXP 	stim_grayScreen: autoDraw = False
+395.4897 	EXP 	stim_grating: ori = 90.0
+395.4897 	EXP 	stim_grating: autoDraw = True
+397.4902 	EXP 	stim_grating: autoDraw = False
+397.4902 	EXP 	stim_grayScreen: autoDraw = True
+400.4767 	EXP 	New trial (rep=80, index=0): None
+400.4934 	EXP 	stim_grayScreen: autoDraw = False
+400.4934 	EXP 	stim_grating: autoDraw = False
+400.4934 	EXP 	stim_grayScreen: autoDraw = False
+400.4934 	EXP 	stim_grating: ori = 0.0
+400.4934 	EXP 	stim_grating: autoDraw = True
+402.4940 	EXP 	stim_grating: autoDraw = False
+402.4940 	EXP 	stim_grayScreen: autoDraw = True
+405.4815 	EXP 	New trial (rep=81, index=0): None
+405.4975 	EXP 	stim_grayScreen: autoDraw = False
+405.4975 	EXP 	stim_grating: autoDraw = False
+405.4975 	EXP 	stim_grayScreen: autoDraw = False
+405.4975 	EXP 	stim_grating: ori = 90.0
+405.4975 	EXP 	stim_grating: autoDraw = True
+407.4982 	EXP 	stim_grating: autoDraw = False
+407.4982 	EXP 	stim_grayScreen: autoDraw = True
+410.4848 	EXP 	New trial (rep=82, index=0): None
+410.5016 	EXP 	stim_grayScreen: autoDraw = False
+410.5016 	EXP 	stim_grating: autoDraw = False
+410.5016 	EXP 	stim_grayScreen: autoDraw = False
+410.5016 	EXP 	stim_grating: ori = 20.0
+410.5016 	EXP 	stim_grating: autoDraw = True
+412.5023 	EXP 	stim_grating: autoDraw = False
+412.5023 	EXP 	stim_grayScreen: autoDraw = True
+415.4890 	EXP 	New trial (rep=83, index=0): None
+415.5058 	EXP 	stim_grayScreen: autoDraw = False
+415.5058 	EXP 	stim_grating: autoDraw = False
+415.5058 	EXP 	stim_grayScreen: autoDraw = False
+415.5058 	EXP 	stim_grating: ori = 30.0
+415.5058 	EXP 	stim_grating: autoDraw = True
+417.5062 	EXP 	stim_grating: autoDraw = False
+417.5062 	EXP 	stim_grayScreen: autoDraw = True
+420.4937 	EXP 	New trial (rep=84, index=0): None
+420.5095 	EXP 	stim_grayScreen: autoDraw = False
+420.5095 	EXP 	stim_grating: autoDraw = False
+420.5095 	EXP 	stim_grayScreen: autoDraw = False
+420.5095 	EXP 	stim_grating: ori = 40.0
+420.5095 	EXP 	stim_grating: autoDraw = True
+422.5104 	EXP 	stim_grating: autoDraw = False
+422.5104 	EXP 	stim_grayScreen: autoDraw = True
+425.4978 	EXP 	New trial (rep=85, index=0): None
+425.5137 	EXP 	stim_grayScreen: autoDraw = False
+425.5137 	EXP 	stim_grating: autoDraw = False
+425.5137 	EXP 	stim_grayScreen: autoDraw = False
+425.5137 	EXP 	stim_grating: ori = 70.0
+425.5137 	EXP 	stim_grating: autoDraw = True
+427.5144 	EXP 	stim_grating: autoDraw = False
+427.5144 	EXP 	stim_grayScreen: autoDraw = True
+430.5009 	EXP 	New trial (rep=86, index=0): None
+430.5176 	EXP 	stim_grayScreen: autoDraw = False
+430.5176 	EXP 	stim_grating: autoDraw = False
+430.5176 	EXP 	stim_grayScreen: autoDraw = False
+430.5176 	EXP 	stim_grating: ori = 20.0
+430.5176 	EXP 	stim_grating: autoDraw = True
+432.5185 	EXP 	stim_grating: autoDraw = False
+432.5185 	EXP 	stim_grayScreen: autoDraw = True
+435.5060 	EXP 	New trial (rep=87, index=0): None
+435.5220 	EXP 	stim_grayScreen: autoDraw = False
+435.5220 	EXP 	stim_grating: autoDraw = False
+435.5220 	EXP 	stim_grayScreen: autoDraw = False
+435.5220 	EXP 	stim_grating: ori = 90.0
+435.5220 	EXP 	stim_grating: autoDraw = True
+437.5724 	EXP 	stim_grating: autoDraw = False
+437.5724 	EXP 	stim_grayScreen: autoDraw = True
+440.5592 	EXP 	New trial (rep=88, index=0): None
+440.5760 	EXP 	stim_grayScreen: autoDraw = False
+440.5760 	EXP 	stim_grating: autoDraw = False
+440.5760 	EXP 	stim_grayScreen: autoDraw = False
+440.5760 	EXP 	stim_grating: ori = 20.0
+440.5760 	EXP 	stim_grating: autoDraw = True
+442.5766 	EXP 	stim_grating: autoDraw = False
+442.5766 	EXP 	stim_grayScreen: autoDraw = True
+445.5631 	EXP 	New trial (rep=89, index=0): None
+445.5800 	EXP 	stim_grayScreen: autoDraw = False
+445.5800 	EXP 	stim_grating: autoDraw = False
+445.5800 	EXP 	stim_grayScreen: autoDraw = False
+445.5800 	EXP 	stim_grating: ori = 70.0
+445.5800 	EXP 	stim_grating: autoDraw = True
+447.5806 	EXP 	stim_grating: autoDraw = False
+447.5806 	EXP 	stim_grayScreen: autoDraw = True
+450.5672 	EXP 	New trial (rep=90, index=0): None
+450.5841 	EXP 	stim_grayScreen: autoDraw = False
+450.5841 	EXP 	stim_grating: autoDraw = False
+450.5841 	EXP 	stim_grayScreen: autoDraw = False
+450.5841 	EXP 	stim_grating: ori = 0.0
+450.5841 	EXP 	stim_grating: autoDraw = True
+452.5847 	EXP 	stim_grating: autoDraw = False
+452.5847 	EXP 	stim_grayScreen: autoDraw = True
+455.5714 	EXP 	New trial (rep=91, index=0): None
+455.5882 	EXP 	stim_grayScreen: autoDraw = False
+455.5882 	EXP 	stim_grating: autoDraw = False
+455.5882 	EXP 	stim_grayScreen: autoDraw = False
+455.5882 	EXP 	stim_grating: ori = 80.0
+455.5882 	EXP 	stim_grating: autoDraw = True
+457.5886 	EXP 	stim_grating: autoDraw = False
+457.5886 	EXP 	stim_grayScreen: autoDraw = True
+460.6106 	EXP 	New trial (rep=92, index=0): None
+460.6268 	EXP 	stim_grayScreen: autoDraw = False
+460.6268 	EXP 	stim_grating: autoDraw = False
+460.6268 	EXP 	stim_grayScreen: autoDraw = False
+460.6268 	EXP 	stim_grating: ori = 30.0
+460.6268 	EXP 	stim_grating: autoDraw = True
+462.6261 	EXP 	stim_grating: autoDraw = False
+462.6261 	EXP 	stim_grayScreen: autoDraw = True
+465.6126 	EXP 	New trial (rep=93, index=0): None
+465.6295 	EXP 	stim_grayScreen: autoDraw = False
+465.6295 	EXP 	stim_grating: autoDraw = False
+465.6295 	EXP 	stim_grayScreen: autoDraw = False
+465.6295 	EXP 	stim_grating: ori = 40.0
+465.6295 	EXP 	stim_grating: autoDraw = True
+467.6302 	EXP 	stim_grating: autoDraw = False
+467.6302 	EXP 	stim_grayScreen: autoDraw = True
+470.6182 	EXP 	New trial (rep=94, index=0): None
+470.6335 	EXP 	stim_grayScreen: autoDraw = False
+470.6335 	EXP 	stim_grating: autoDraw = False
+470.6335 	EXP 	stim_grayScreen: autoDraw = False
+470.6335 	EXP 	stim_grating: ori = 40.0
+470.6335 	EXP 	stim_grating: autoDraw = True
+472.6342 	EXP 	stim_grating: autoDraw = False
+472.6342 	EXP 	stim_grayScreen: autoDraw = True
+475.6223 	EXP 	New trial (rep=95, index=0): None
+475.6378 	EXP 	stim_grayScreen: autoDraw = False
+475.6378 	EXP 	stim_grating: autoDraw = False
+475.6378 	EXP 	stim_grayScreen: autoDraw = False
+475.6378 	EXP 	stim_grating: ori = 70.0
+475.6378 	EXP 	stim_grating: autoDraw = True
+477.6383 	EXP 	stim_grating: autoDraw = False
+477.6383 	EXP 	stim_grayScreen: autoDraw = True
+480.6257 	EXP 	New trial (rep=96, index=0): None
+480.6417 	EXP 	stim_grayScreen: autoDraw = False
+480.6417 	EXP 	stim_grating: autoDraw = False
+480.6417 	EXP 	stim_grayScreen: autoDraw = False
+480.6417 	EXP 	stim_grating: ori = 30.0
+480.6417 	EXP 	stim_grating: autoDraw = True
+482.6423 	EXP 	stim_grating: autoDraw = False
+482.6423 	EXP 	stim_grayScreen: autoDraw = True
+485.6294 	EXP 	New trial (rep=97, index=0): None
+485.6456 	EXP 	stim_grayScreen: autoDraw = False
+485.6456 	EXP 	stim_grating: autoDraw = False
+485.6456 	EXP 	stim_grayScreen: autoDraw = False
+485.6456 	EXP 	stim_grating: ori = 40.0
+485.6456 	EXP 	stim_grating: autoDraw = True
+487.6463 	EXP 	stim_grating: autoDraw = False
+487.6463 	EXP 	stim_grayScreen: autoDraw = True
+490.6327 	EXP 	New trial (rep=98, index=0): None
+490.6496 	EXP 	stim_grayScreen: autoDraw = False
+490.6496 	EXP 	stim_grating: autoDraw = False
+490.6496 	EXP 	stim_grayScreen: autoDraw = False
+490.6496 	EXP 	stim_grating: ori = 50.0
+490.6496 	EXP 	stim_grating: autoDraw = True
+492.6504 	EXP 	stim_grating: autoDraw = False
+492.6504 	EXP 	stim_grayScreen: autoDraw = True
+495.6380 	EXP 	New trial (rep=99, index=0): None
+495.6540 	EXP 	stim_grayScreen: autoDraw = False
+495.6540 	EXP 	stim_grating: autoDraw = False
+495.6540 	EXP 	stim_grayScreen: autoDraw = False
+495.6540 	EXP 	stim_grating: ori = 30.0
+495.6540 	EXP 	stim_grating: autoDraw = True
+497.6545 	EXP 	stim_grating: autoDraw = False
+497.6545 	EXP 	stim_grayScreen: autoDraw = True
+500.6418 	EXP 	New trial (rep=100, index=0): None
+500.6578 	EXP 	stim_grayScreen: autoDraw = False
+500.6578 	EXP 	stim_grating: autoDraw = False
+500.6578 	EXP 	stim_grayScreen: autoDraw = False
+500.6578 	EXP 	stim_grating: ori = 20.0
+500.6578 	EXP 	stim_grating: autoDraw = True
+502.6583 	EXP 	stim_grating: autoDraw = False
+502.6583 	EXP 	stim_grayScreen: autoDraw = True
+505.6459 	EXP 	New trial (rep=101, index=0): None
+505.6619 	EXP 	stim_grayScreen: autoDraw = False
+505.6619 	EXP 	stim_grating: autoDraw = False
+505.6619 	EXP 	stim_grayScreen: autoDraw = False
+505.6619 	EXP 	stim_grating: ori = 40.0
+505.6619 	EXP 	stim_grating: autoDraw = True
+507.6626 	EXP 	stim_grating: autoDraw = False
+507.6626 	EXP 	stim_grayScreen: autoDraw = True
+510.6497 	EXP 	New trial (rep=102, index=0): None
+510.6659 	EXP 	stim_grayScreen: autoDraw = False
+510.6659 	EXP 	stim_grating: autoDraw = False
+510.6659 	EXP 	stim_grayScreen: autoDraw = False
+510.6659 	EXP 	stim_grating: ori = 50.0
+510.6659 	EXP 	stim_grating: autoDraw = True
+512.6665 	EXP 	stim_grating: autoDraw = False
+512.6665 	EXP 	stim_grayScreen: autoDraw = True
+515.6533 	EXP 	New trial (rep=103, index=0): None
+515.6703 	EXP 	stim_grayScreen: autoDraw = False
+515.6703 	EXP 	stim_grating: autoDraw = False
+515.6703 	EXP 	stim_grayScreen: autoDraw = False
+515.6703 	EXP 	stim_grating: ori = 80.0
+515.6703 	EXP 	stim_grating: autoDraw = True
+517.6708 	EXP 	stim_grating: autoDraw = False
+517.6708 	EXP 	stim_grayScreen: autoDraw = True
+520.6578 	EXP 	New trial (rep=104, index=0): None
+520.6739 	EXP 	stim_grayScreen: autoDraw = False
+520.6739 	EXP 	stim_grating: autoDraw = False
+520.6739 	EXP 	stim_grayScreen: autoDraw = False
+520.6739 	EXP 	stim_grating: ori = 50.0
+520.6739 	EXP 	stim_grating: autoDraw = True
+522.6747 	EXP 	stim_grating: autoDraw = False
+522.6747 	EXP 	stim_grayScreen: autoDraw = True
+525.6616 	EXP 	New trial (rep=105, index=0): None
+525.6781 	EXP 	stim_grayScreen: autoDraw = False
+525.6781 	EXP 	stim_grating: autoDraw = False
+525.6781 	EXP 	stim_grayScreen: autoDraw = False
+525.6781 	EXP 	stim_grating: ori = 20.0
+525.6781 	EXP 	stim_grating: autoDraw = True
+527.6787 	EXP 	stim_grating: autoDraw = False
+527.6787 	EXP 	stim_grayScreen: autoDraw = True
+530.6661 	EXP 	New trial (rep=106, index=0): None
+530.6823 	EXP 	stim_grayScreen: autoDraw = False
+530.6823 	EXP 	stim_grating: autoDraw = False
+530.6823 	EXP 	stim_grayScreen: autoDraw = False
+530.6823 	EXP 	stim_grating: ori = 80.0
+530.6823 	EXP 	stim_grating: autoDraw = True
+532.6828 	EXP 	stim_grating: autoDraw = False
+532.6828 	EXP 	stim_grayScreen: autoDraw = True
+535.6694 	EXP 	New trial (rep=107, index=0): None
+535.6863 	EXP 	stim_grayScreen: autoDraw = False
+535.6863 	EXP 	stim_grating: autoDraw = False
+535.6863 	EXP 	stim_grayScreen: autoDraw = False
+535.6863 	EXP 	stim_grating: ori = 40.0
+535.6863 	EXP 	stim_grating: autoDraw = True
+537.6870 	EXP 	stim_grating: autoDraw = False
+537.6870 	EXP 	stim_grayScreen: autoDraw = True
+540.6733 	EXP 	New trial (rep=108, index=0): None
+540.6902 	EXP 	stim_grayScreen: autoDraw = False
+540.6902 	EXP 	stim_grating: autoDraw = False
+540.6902 	EXP 	stim_grayScreen: autoDraw = False
+540.6902 	EXP 	stim_grating: ori = 20.0
+540.6902 	EXP 	stim_grating: autoDraw = True
+542.6907 	EXP 	stim_grating: autoDraw = False
+542.6907 	EXP 	stim_grayScreen: autoDraw = True
+545.6781 	EXP 	New trial (rep=109, index=0): None
+545.6942 	EXP 	stim_grayScreen: autoDraw = False
+545.6942 	EXP 	stim_grating: autoDraw = False
+545.6942 	EXP 	stim_grayScreen: autoDraw = False
+545.6942 	EXP 	stim_grating: ori = 70.0
+545.6942 	EXP 	stim_grating: autoDraw = True
+547.6950 	EXP 	stim_grating: autoDraw = False
+547.6950 	EXP 	stim_grayScreen: autoDraw = True
+550.6824 	EXP 	New trial (rep=110, index=0): None
+550.6981 	EXP 	stim_grayScreen: autoDraw = False
+550.6981 	EXP 	stim_grating: autoDraw = False
+550.6981 	EXP 	stim_grayScreen: autoDraw = False
+550.6981 	EXP 	stim_grating: ori = 40.0
+550.6981 	EXP 	stim_grating: autoDraw = True
+552.6988 	EXP 	stim_grating: autoDraw = False
+552.6988 	EXP 	stim_grayScreen: autoDraw = True
+555.6854 	EXP 	New trial (rep=111, index=0): None
+555.7026 	EXP 	stim_grayScreen: autoDraw = False
+555.7026 	EXP 	stim_grating: autoDraw = False
+555.7026 	EXP 	stim_grayScreen: autoDraw = False
+555.7026 	EXP 	stim_grating: ori = 30.0
+555.7026 	EXP 	stim_grating: autoDraw = True
+557.7031 	EXP 	stim_grating: autoDraw = False
+557.7031 	EXP 	stim_grayScreen: autoDraw = True
+560.6914 	EXP 	New trial (rep=112, index=0): None
+560.7062 	EXP 	stim_grayScreen: autoDraw = False
+560.7062 	EXP 	stim_grating: autoDraw = False
+560.7062 	EXP 	stim_grayScreen: autoDraw = False
+560.7062 	EXP 	stim_grating: ori = 50.0
+560.7062 	EXP 	stim_grating: autoDraw = True
+562.7069 	EXP 	stim_grating: autoDraw = False
+562.7069 	EXP 	stim_grayScreen: autoDraw = True
+565.6944 	EXP 	New trial (rep=113, index=0): None
+565.7103 	EXP 	stim_grayScreen: autoDraw = False
+565.7103 	EXP 	stim_grating: autoDraw = False
+565.7103 	EXP 	stim_grayScreen: autoDraw = False
+565.7103 	EXP 	stim_grating: ori = 90.0
+565.7103 	EXP 	stim_grating: autoDraw = True
+567.7110 	EXP 	stim_grating: autoDraw = False
+567.7110 	EXP 	stim_grayScreen: autoDraw = True
+570.6992 	EXP 	New trial (rep=114, index=0): None
+570.7145 	EXP 	stim_grayScreen: autoDraw = False
+570.7145 	EXP 	stim_grating: autoDraw = False
+570.7145 	EXP 	stim_grayScreen: autoDraw = False
+570.7145 	EXP 	stim_grating: ori = 40.0
+570.7145 	EXP 	stim_grating: autoDraw = True
+572.7152 	EXP 	stim_grating: autoDraw = False
+572.7152 	EXP 	stim_grayScreen: autoDraw = True
+575.7018 	EXP 	New trial (rep=115, index=0): None
+575.7186 	EXP 	stim_grayScreen: autoDraw = False
+575.7186 	EXP 	stim_grating: autoDraw = False
+575.7186 	EXP 	stim_grayScreen: autoDraw = False
+575.7186 	EXP 	stim_grating: ori = 50.0
+575.7186 	EXP 	stim_grating: autoDraw = True
+577.7199 	EXP 	stim_grating: autoDraw = False
+577.7199 	EXP 	stim_grayScreen: autoDraw = True
+580.7074 	EXP 	New trial (rep=116, index=0): None
+580.7224 	EXP 	stim_grayScreen: autoDraw = False
+580.7224 	EXP 	stim_grating: autoDraw = False
+580.7224 	EXP 	stim_grayScreen: autoDraw = False
+580.7224 	EXP 	stim_grating: ori = 90.0
+580.7224 	EXP 	stim_grating: autoDraw = True
+582.7231 	EXP 	stim_grating: autoDraw = False
+582.7231 	EXP 	stim_grayScreen: autoDraw = True
+585.7098 	EXP 	New trial (rep=117, index=0): None
+585.7266 	EXP 	stim_grayScreen: autoDraw = False
+585.7266 	EXP 	stim_grating: autoDraw = False
+585.7266 	EXP 	stim_grayScreen: autoDraw = False
+585.7266 	EXP 	stim_grating: ori = 50.0
+585.7266 	EXP 	stim_grating: autoDraw = True
+587.7274 	EXP 	stim_grating: autoDraw = False
+587.7274 	EXP 	stim_grayScreen: autoDraw = True
+590.7161 	EXP 	New trial (rep=118, index=0): None
+590.7309 	EXP 	stim_grayScreen: autoDraw = False
+590.7309 	EXP 	stim_grating: autoDraw = False
+590.7309 	EXP 	stim_grayScreen: autoDraw = False
+590.7309 	EXP 	stim_grating: ori = 40.0
+590.7309 	EXP 	stim_grating: autoDraw = True
+592.7647 	EXP 	stim_grating: autoDraw = False
+592.7647 	EXP 	stim_grayScreen: autoDraw = True
+595.7513 	EXP 	New trial (rep=119, index=0): None
+595.7682 	EXP 	stim_grayScreen: autoDraw = False
+595.7682 	EXP 	stim_grating: autoDraw = False
+595.7682 	EXP 	stim_grayScreen: autoDraw = False
+595.7682 	EXP 	stim_grating: ori = 40.0
+595.7682 	EXP 	stim_grating: autoDraw = True
+597.7689 	EXP 	stim_grating: autoDraw = False
+597.7689 	EXP 	stim_grayScreen: autoDraw = True
+600.7561 	EXP 	New trial (rep=120, index=0): None
+600.7721 	EXP 	stim_grayScreen: autoDraw = False
+600.7721 	EXP 	stim_grating: autoDraw = False
+600.7721 	EXP 	stim_grayScreen: autoDraw = False
+600.7721 	EXP 	stim_grating: ori = 20.0
+600.7721 	EXP 	stim_grating: autoDraw = True
+602.7728 	EXP 	stim_grating: autoDraw = False
+602.7728 	EXP 	stim_grayScreen: autoDraw = True
+605.7605 	EXP 	New trial (rep=121, index=0): None
+605.7761 	EXP 	stim_grayScreen: autoDraw = False
+605.7761 	EXP 	stim_grating: autoDraw = False
+605.7761 	EXP 	stim_grayScreen: autoDraw = False
+605.7761 	EXP 	stim_grating: ori = 90.0
+605.7761 	EXP 	stim_grating: autoDraw = True
+607.7769 	EXP 	stim_grating: autoDraw = False
+607.7769 	EXP 	stim_grayScreen: autoDraw = True
+610.7635 	EXP 	New trial (rep=122, index=0): None
+610.7802 	EXP 	stim_grayScreen: autoDraw = False
+610.7802 	EXP 	stim_grating: autoDraw = False
+610.7802 	EXP 	stim_grayScreen: autoDraw = False
+610.7802 	EXP 	stim_grating: ori = 30.0
+610.7802 	EXP 	stim_grating: autoDraw = True
+612.7809 	EXP 	stim_grating: autoDraw = False
+612.7809 	EXP 	stim_grayScreen: autoDraw = True
+615.7675 	EXP 	New trial (rep=123, index=0): None
+615.7843 	EXP 	stim_grayScreen: autoDraw = False
+615.7843 	EXP 	stim_grating: autoDraw = False
+615.7843 	EXP 	stim_grayScreen: autoDraw = False
+615.7843 	EXP 	stim_grating: ori = 90.0
+615.7843 	EXP 	stim_grating: autoDraw = True
+617.7852 	EXP 	stim_grating: autoDraw = False
+617.7852 	EXP 	stim_grayScreen: autoDraw = True
+620.7710 	EXP 	New trial (rep=124, index=0): None
+620.7884 	EXP 	stim_grayScreen: autoDraw = False
+620.7884 	EXP 	stim_grating: autoDraw = False
+620.7884 	EXP 	stim_grayScreen: autoDraw = False
+620.7884 	EXP 	stim_grating: ori = 0.0
+620.7884 	EXP 	stim_grating: autoDraw = True
+622.7890 	EXP 	stim_grating: autoDraw = False
+622.7890 	EXP 	stim_grayScreen: autoDraw = True
+625.7755 	EXP 	New trial (rep=125, index=0): None
+625.7924 	EXP 	stim_grayScreen: autoDraw = False
+625.7924 	EXP 	stim_grating: autoDraw = False
+625.7924 	EXP 	stim_grayScreen: autoDraw = False
+625.7924 	EXP 	stim_grating: ori = 0.0
+625.7924 	EXP 	stim_grating: autoDraw = True
+627.7928 	EXP 	stim_grating: autoDraw = False
+627.7928 	EXP 	stim_grayScreen: autoDraw = True
+630.7796 	EXP 	New trial (rep=126, index=0): None
+630.7962 	EXP 	stim_grayScreen: autoDraw = False
+630.7962 	EXP 	stim_grating: autoDraw = False
+630.7962 	EXP 	stim_grayScreen: autoDraw = False
+630.7962 	EXP 	stim_grating: ori = 20.0
+630.7962 	EXP 	stim_grating: autoDraw = True
+632.7972 	EXP 	stim_grating: autoDraw = False
+632.7972 	EXP 	stim_grayScreen: autoDraw = True
+635.7840 	EXP 	New trial (rep=127, index=0): None
+635.8005 	EXP 	stim_grayScreen: autoDraw = False
+635.8005 	EXP 	stim_grating: autoDraw = False
+635.8005 	EXP 	stim_grayScreen: autoDraw = False
+635.8005 	EXP 	stim_grating: ori = 40.0
+635.8005 	EXP 	stim_grating: autoDraw = True
+637.8012 	EXP 	stim_grating: autoDraw = False
+637.8012 	EXP 	stim_grayScreen: autoDraw = True
+640.8034 	EXP 	stim_grayScreen: autoDraw = False
+640.8034 	EXP 	stim_grating: autoDraw = False
+640.8034 	EXP 	stim_grayScreen: autoDraw = False
+640.8045 	EXP 	Gratings_vis_stim_devJG_v0.2: status = STOPPED
+640.8145 	INFO 	saved data to 'C:\\dev\\PsychoPy\\Gratings_vis_stim_devJG_v0.2\\data/855682_Gratings_vis_stim_devJG_v0.2_2024-06-28_12h31.53.487.csv'
+640.8155 	INFO 	saved data to C:\dev\PsychoPy\Gratings_vis_stim_devJG_v0.2\data/855682_Gratings_vis_stim_devJG_v0.2_2024-06-28_12h31.53.487.psydat
+640.8255 	EXP 	window1: mouseVisible = True
+641.1995 	DEBUG 	Saving data for Gratings_vis_stim_devJG_v0.2 ExperimentHandler

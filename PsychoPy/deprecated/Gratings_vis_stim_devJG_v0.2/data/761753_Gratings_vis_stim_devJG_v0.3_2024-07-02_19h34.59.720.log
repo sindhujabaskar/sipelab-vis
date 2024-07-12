@@ -1,0 +1,142 @@
+5.7141 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+5.7152 	INFO 	Loaded monitor calibration from ['2024_06_26 12:00']
+5.8831 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F850>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F7F0>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F640>, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001C5C4E198E0>, multiSample=False, name='window1', numSamples=2, pos=[560.0, 240.0], screen=1, size=array([800, 600]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+5.8832 	EXP 	window1: backgroundImage = ''
+5.8832 	EXP 	window1: backgroundFit = 'none'
+5.8833 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.8834 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.8846 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.8849 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.8877 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8885 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8892 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8901 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8910 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8916 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8924 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8934 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8940 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8946 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8956 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8965 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8974 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8982 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8990 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.8999 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9007 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9014 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9020 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9031 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9038 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9042 	DEBUG 	Uploading Texture Font fontname to graphics card
+5.9054 	DEBUG 	Upload of Texture Font fontname complete
+5.9062 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.9063 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.9067 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.9070 	EXP 	window1: mouseVisible = <method-wrapper '__getattribute__' of attributeSetter object at 0x000001C5BD62F970>
+5.9090 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9100 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9109 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+5.9111 	DEBUG 	Uploading Texture Font fontname to graphics card
+5.9128 	DEBUG 	Upload of Texture Font fontname complete
+5.9139 	EXP 	window1: Attempting to measure frame rate of screen (1) ...
+5.9139 	EXP 	window1: recordFrameIntervals = False
+6.1124 	EXP 	window1: recordFrameIntervals = True
+6.2963 	EXP 	Screen (1) actual frame rate measured at 59.92Hz
+6.2963 	EXP 	window1: recordFrameIntervals = False
+6.2964 	EXP 	window1: mouseVisible = False
+6.2967 	EXP 	window1: mouseVisible = False
+6.2968 	EXP 	window1: mouseVisible = False
+6.2972 	EXP 	window1: mouseVisible = False
+6.2975 	EXP 	window1: mouseVisible = False
+6.2999 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3007 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3016 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3027 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3037 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3047 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3054 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3064 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3074 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3084 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+6.3086 	DEBUG 	Uploading Texture Font fontname to graphics card
+6.3092 	DEBUG 	Upload of Texture Font fontname complete
+6.3101 	EXP 	window1: mouseVisible = False
+6.3102 	EXP 	window1: mouseVisible = False
+6.3106 	EXP 	window1: mouseVisible = False
+6.3111 	EXP 	window1: mouseVisible = False
+6.3229 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+8.4173 	INFO 	keyboard.Keyboard is using iohub backend.
+8.4174 	EXP 	Gratings_vis_stim_devJG_v0.3: status = STARTED
+8.4175 	EXP 	window1: mouseVisible = False
+8.4198 	EXP 	Created stim_grating = GratingStim(__class__=<class 'psychopy.visual.grating.GratingStim'>, anchor='center', autoDraw=False, autoLog=True, blendmode='avg', color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, interpolate=True, mask=None, maskParams=None, name='stim_grating', opacity=1.0, ori=1.0, phase=array([1., 1.]), pos=array([0., 0.]), rgbPedestal=array([0., 0., 0.]), sf=array([5., 5.]), size=array([2., 2.]), tex='sin', texRes=256.0, units='height', win=Window(...))
+8.4199 	EXP 	window1: mouseVisible = False
+8.4218 	EXP 	Created stim_grayScreen = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([0., 0., 0.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, image=None, interpolate=True, mask=None, maskParams=None, name='stim_grayScreen', opacity=1.0, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), texRes=128.0, units='height', win=Window(...))
+0.0128 	EXP 	Created sequence: sequential, trialTypes=1, nReps=128, seed=None
+0.0130 	EXP 	New trial (rep=0, index=0): None
+0.0512 	EXP 	stim_grating: ori = 0.0
+0.0512 	EXP 	stim_grating: autoDraw = True
+0.0512 	EXP 	stim_grating: tex = 'sin'
+2.0610 	EXP 	stim_grating: autoDraw = False
+2.0610 	EXP 	stim_grayScreen: autoDraw = True
+5.0025 	EXP 	New trial (rep=1, index=0): None
+5.0153 	EXP 	stim_grating: autoDraw = False
+5.0153 	EXP 	stim_grayScreen: autoDraw = False
+5.0153 	EXP 	stim_grating: ori = 45.0
+5.0153 	EXP 	stim_grating: autoDraw = True
+7.0164 	EXP 	stim_grating: autoDraw = False
+7.0164 	EXP 	stim_grayScreen: autoDraw = True
+10.0034 	EXP 	New trial (rep=2, index=0): None
+10.0196 	EXP 	stim_grating: autoDraw = False
+10.0196 	EXP 	stim_grayScreen: autoDraw = False
+10.0196 	EXP 	stim_grating: ori = 90.0
+10.0196 	EXP 	stim_grating: autoDraw = True
+12.0200 	EXP 	stim_grating: autoDraw = False
+12.0200 	EXP 	stim_grayScreen: autoDraw = True
+15.0078 	EXP 	New trial (rep=3, index=0): None
+15.0237 	EXP 	stim_grating: autoDraw = False
+15.0237 	EXP 	stim_grayScreen: autoDraw = False
+15.0237 	EXP 	stim_grating: ori = 135.0
+15.0237 	EXP 	stim_grating: autoDraw = True
+17.0242 	EXP 	stim_grating: autoDraw = False
+17.0242 	EXP 	stim_grayScreen: autoDraw = True
+20.0143 	EXP 	New trial (rep=4, index=0): None
+20.0275 	EXP 	stim_grating: autoDraw = False
+20.0275 	EXP 	stim_grayScreen: autoDraw = False
+20.0275 	EXP 	stim_grating: ori = 180.0
+20.0275 	EXP 	stim_grating: autoDraw = True
+22.0448 	EXP 	stim_grating: autoDraw = False
+22.0448 	EXP 	stim_grayScreen: autoDraw = True
+25.0013 	EXP 	New trial (rep=5, index=0): None
+25.0162 	EXP 	stim_grating: autoDraw = False
+25.0162 	EXP 	stim_grayScreen: autoDraw = False
+25.0162 	EXP 	stim_grating: ori = 225.0
+25.0162 	EXP 	stim_grating: autoDraw = True
+27.0165 	EXP 	stim_grating: autoDraw = False
+27.0165 	EXP 	stim_grayScreen: autoDraw = True
+30.0037 	EXP 	New trial (rep=6, index=0): None
+30.0200 	EXP 	stim_grating: autoDraw = False
+30.0200 	EXP 	stim_grayScreen: autoDraw = False
+30.0200 	EXP 	stim_grating: ori = 270.0
+30.0200 	EXP 	stim_grating: autoDraw = True
+32.0205 	EXP 	stim_grating: autoDraw = False
+32.0205 	EXP 	stim_grayScreen: autoDraw = True
+35.0075 	EXP 	New trial (rep=7, index=0): None
+35.0237 	EXP 	stim_grating: autoDraw = False
+35.0237 	EXP 	stim_grayScreen: autoDraw = False
+35.0237 	EXP 	stim_grating: ori = 315.0
+35.0237 	EXP 	stim_grating: autoDraw = True
+37.0246 	EXP 	stim_grating: autoDraw = False
+37.0246 	EXP 	stim_grayScreen: autoDraw = True
+40.0116 	EXP 	New trial (rep=8, index=0): None
+40.0278 	EXP 	stim_grating: autoDraw = False
+40.0278 	EXP 	stim_grayScreen: autoDraw = False
+40.0278 	EXP 	stim_grating: ori = 345.0
+40.0278 	EXP 	stim_grating: autoDraw = True
+42.0286 	EXP 	stim_grating: autoDraw = False
+42.0286 	EXP 	stim_grayScreen: autoDraw = True
+45.0160 	EXP 	New trial (rep=9, index=0): None
+45.0223 	EXP 	window1: mouseVisible = True
+45.0246 	DEBUG 	Saving data for Gratings_vis_stim_devJG_v0.3 ExperimentHandler
+45.0252 	INFO 	saved data to C:\dev\PsychoPy\Gratings_vis_stim_devJG_v0.2\data/761753_Gratings_vis_stim_devJG_v0.3_2024-07-02_19h34.59.720.psydat
+45.0258 	INFO 	saved data to 'C:\\dev\\PsychoPy\\Gratings_vis_stim_devJG_v0.2\\data/761753_Gratings_vis_stim_devJG_v0.3_2024-07-02_19h34.59.720.csv'
