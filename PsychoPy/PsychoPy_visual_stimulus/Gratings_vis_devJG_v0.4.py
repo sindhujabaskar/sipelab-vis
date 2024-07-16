@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 16, 2024, at 14:14
+    on July 15, 2024, at 18:24
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,44 +33,12 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from code__nidaq_trigger
-import nidaqmx
-from psychopy import core
-import time
-
-nidaq_trigger = False
-
-# Function to wait for trigger signal
-def wait_for_trigger():
-    # Define NI-DAQmx task
-    with nidaqmx.Task() as task: 
-        # Configure the task to listen for a digital input signal on a specific port and line
-        task.di_channels.add_di_chan("Dev1/port2/line0")
-    
-        print("Waiting for trigger signal...")
-        while True:
-            signal = task.read()
-            if signal:  # Assuming the trigger signal is a digital high (True) signal
-                print("Trigger signal received!")
-                nidaq_trigger = False
-                break
-            core.wait(0.01)  # Small delay to prevent CPU overload
-
-def trigger_start():
-    with nidaqmx.Task() as task:
-        task.do_channels.add_do_chan("Dev1/port2/line0")
-        task.write(True)
-        time.sleep(0.1)
-        task.write(False)
 # Run 'Before Experiment' code from code_generate_grating_angles
 import random
 
 
 grating_angles_array = [0, 45, 90, 135, 180, 225, 270, 315]
 
-# Run 'Before Experiment' code from code_read_encoder
-arduino_port = 'COM3'
-encoder_radius = 2.75
 # --- Setup global variables (available in all functions) ---
 # create a device manager to handle hardware (keyboards, mice, mirophones, speakers, etc.)
 deviceManager = hardware.DeviceManager()
@@ -170,7 +138,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\dev\\sipefield-gratings\\PsychoPy\\PsychoPy_visual_stimulus\\Gratings_vis_stim_devSB-JG_v0.4_lastrun.py',
+        originPath='C:\\dev\\sipefield-gratings\\PsychoPy\\PsychoPy_visual_stimulus\\Gratings_vis_devJG_v0.4.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -290,12 +258,6 @@ def setupDevices(expInfo, thisExp, win):
         deviceManager.addDevice(
             deviceClass='keyboard', deviceName='defaultKeyboard', backend='iohub'
         )
-    if deviceManager.getDevice('key_resp_start') is None:
-        # initialise key_resp_start
-        key_resp_start = deviceManager.addDevice(
-            deviceClass='keyboard',
-            deviceName='key_resp_start',
-        )
     # return True if completed successfully
     return True
 
@@ -397,16 +359,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # Start Code - component code to be run after the window creation
     
-    # --- Initialize components for Routine "nidaqTrigger" ---
-    text_waiting_message = visual.TextStim(win=win, name='text_waiting_message',
-        text='Waiting for NIDAQ trigger to begin visual stim...',
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
-    key_resp_start = keyboard.Keyboard(deviceName='key_resp_start')
-    
     # --- Initialize components for Routine "display_gratings" ---
     # Run 'Begin Experiment' code from code_generate_grating_angles
     grating_index = 0
@@ -425,38 +377,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color=[1,1,1], colorSpace='rgb',
         opacity=2.0, contrast=1.0, blendmode='avg',
         texRes=256.0, interpolate=True, depth=-2.0)
-    # Run 'Begin Experiment' code from code_read_encoder
-    import serial
-    import time
-    
-    class Encoder:
-        def __init__(self, port, baud_rate=9600, radius=2.75, sampling_rate_hz=20):
-            self.port = port
-            self.baud_rate = baud_rate
-            self.radius = radius
-            self.sampling_rate_hz = sampling_rate_hz
-            self.sampling_interval = 1.0 / sampling_rate_hz
-            self.ser = serial.Serial(self.port, self.baud_rate, timeout=1)
-            time.sleep(2)  # Wait for the serial connection to initialize
-    
-        def read_data(self):
-            if self.ser.in_waiting > 0:
-                line = self.ser.readline().decode('utf-8').strip()
-                if line:
-                    try:
-                        total_distance = float(line)
-                        return total_distance
-                    except ValueError:
-                        return None  # Ignore lines that can't be converted to float
-            return None
-    
-        def close(self):
-            self.ser.close()
-            print("Serial connection closed.")
-    
-    # Initialize the encoder object
-    encoder = Encoder(port=arduino_port, baud_rate=9600, radius=encoder_radius, sampling_rate_hz=20)
-    
     
     # create some handy timers
     
@@ -485,140 +405,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     expInfo['expStart'] = data.getDateStr(
         format='%Y-%m-%d %Hh%M.%S.%f %z', fractionalSecondDigits=6
     )
-    
-    # --- Prepare to start Routine "nidaqTrigger" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('nidaqTrigger.started', globalClock.getTime(format='float'))
-    # Run 'Begin Routine' code from code__nidaq_trigger
-    #wait_for_trigger()
-    # create starting attributes for key_resp_start
-    key_resp_start.keys = []
-    key_resp_start.rt = []
-    _key_resp_start_allKeys = []
-    # keep track of which components have finished
-    nidaqTriggerComponents = [text_waiting_message, key_resp_start]
-    for thisComponent in nidaqTriggerComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "nidaqTrigger" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *text_waiting_message* updates
-        
-        # if text_waiting_message is starting this frame...
-        if text_waiting_message.status == NOT_STARTED and frameN >= 0:
-            # keep track of start time/frame for later
-            text_waiting_message.frameNStart = frameN  # exact frame index
-            text_waiting_message.tStart = t  # local t and not account for scr refresh
-            text_waiting_message.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_waiting_message, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text_waiting_message.started')
-            # update status
-            text_waiting_message.status = STARTED
-            text_waiting_message.setAutoDraw(True)
-        
-        # if text_waiting_message is active this frame...
-        if text_waiting_message.status == STARTED:
-            # update params
-            pass
-        # Run 'Each Frame' code from code__nidaq_trigger
-        ## Check the condition each frame
-        #with nidaqmx.Task() as nidaq: 
-        #    # Configure the task to listen for a digital input signal on a specific port and line
-        #    nidaq.di_channels.add_di_chan("Dev1/port2/line0")
-        #    print("Waiting for trigger signal...")
-        #    
-        #    nidaq_trigger = nidaq.read()
-        #    
-        #    if nidaq_trigger:
-        #        continueRoutine = False  # Ends the routine if the condition is met
-        #
-        
-        # *key_resp_start* updates
-        waitOnFlip = False
-        
-        # if key_resp_start is starting this frame...
-        if key_resp_start.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            key_resp_start.frameNStart = frameN  # exact frame index
-            key_resp_start.tStart = t  # local t and not account for scr refresh
-            key_resp_start.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(key_resp_start, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'key_resp_start.started')
-            # update status
-            key_resp_start.status = STARTED
-            # keyboard checking is just starting
-            waitOnFlip = True
-            win.callOnFlip(key_resp_start.clock.reset)  # t=0 on next screen flip
-            win.callOnFlip(key_resp_start.clearEvents, eventType='keyboard')  # clear events on next screen flip
-        if key_resp_start.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp_start.getKeys(keyList=['y','n','left','right','space'], ignoreKeys=["escape"], waitRelease=False)
-            _key_resp_start_allKeys.extend(theseKeys)
-            if len(_key_resp_start_allKeys):
-                key_resp_start.keys = _key_resp_start_allKeys[-1].name  # just the last key pressed
-                key_resp_start.rt = _key_resp_start_allKeys[-1].rt
-                key_resp_start.duration = _key_resp_start_allKeys[-1].duration
-                # a response ends the routine
-                continueRoutine = False
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in nidaqTriggerComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "nidaqTrigger" ---
-    for thisComponent in nidaqTriggerComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('nidaqTrigger.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code__nidaq_trigger
-    trigger_start()
-    
-    # check responses
-    if key_resp_start.keys in ['', [], None]:  # No response was made
-        key_resp_start.keys = None
-    thisExp.addData('key_resp_start.keys',key_resp_start.keys)
-    if key_resp_start.keys != None:  # we had a response
-        thisExp.addData('key_resp_start.rt', key_resp_start.rt)
-        thisExp.addData('key_resp_start.duration', key_resp_start.duration)
-    thisExp.nextEntry()
-    # the Routine "nidaqTrigger" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler(nReps=10.0, method='sequential', 
@@ -669,10 +455,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             #print("if statement: index reset")
         
         stim_grating.setOri(grating_angle)
-        # Run 'Begin Routine' code from code_read_encoder
-        # Start recording data
-        recorded_data = []
-        
         # keep track of which components have finished
         display_gratingsComponents = [stim_grayScreen, stim_grating]
         for thisComponent in display_gratingsComponents:
@@ -762,14 +544,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # update status
                     stim_grating.status = FINISHED
                     stim_grating.setAutoDraw(False)
-            # Run 'Each Frame' code from code_read_encoder
-            # Read data during the routine
-            distance = encoder.read_data()
-            if distance is not None:
-                recorded_data.append(distance)
-                print(f"Total Distance: {distance} inches")
-            time.sleep(encoder.sampling_interval)
-            
             
             # check for quit (typically the Esc key)
             if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -821,14 +595,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     trials.saveAsText(filename + 'trials.csv', delim=',',
         stimOut=params,
         dataOut=['n','all_mean','all_std', 'all_raw'])
-    # Run 'End Experiment' code from code_read_encoder
-    # Save data to PsychoPy's data output
-    thisExp.addData('encoder_data', recorded_data)
-    
-    # Close the serial connection
-    encoder.close()
-    print("Data recording complete.")
-    
     
     # mark experiment as finished
     endExperiment(thisExp, win=win)

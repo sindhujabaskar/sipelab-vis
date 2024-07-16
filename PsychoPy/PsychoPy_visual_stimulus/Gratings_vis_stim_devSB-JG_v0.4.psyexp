@@ -182,7 +182,7 @@
         <Param val="sync_task.stop();&amp;#10;psychoJS.experiment.addData(&quot;sync_times&quot;, sync_task.sync_times);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="None" name="disabled"/>
         <Param val="code_nidaq_sync_pulse_2" valType="code" updates="None" name="name"/>
       </CodeComponent>
       <CodeComponent name="code_read_encoder" plugin="None">
@@ -210,7 +210,7 @@
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
         <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
         <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="nidaqTrigger" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
@@ -246,22 +246,42 @@
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
       <CodeComponent name="code__nidaq_trigger" plugin="None">
-        <Param val="import nidaqmx&amp;#10;from psychopy import core&amp;#10;&amp;#10;nidaq_trigger = False&amp;#10;&amp;#10;# Function to wait for trigger signal&amp;#10;def wait_for_trigger():&amp;#10;    # Define NI-DAQmx task&amp;#10;    with nidaqmx.Task() as task: &amp;#10;        # Configure the task to listen for a digital input signal on a specific port and line&amp;#10;        task.di_channels.add_di_chan(&quot;Dev1/port2/line0&quot;)&amp;#10;    &amp;#10;        print(&quot;Waiting for trigger signal...&quot;)&amp;#10;        while True:&amp;#10;            signal = task.read()&amp;#10;            if signal:  # Assuming the trigger signal is a digital high (True) signal&amp;#10;                print(&quot;Trigger signal received!&quot;)&amp;#10;                nidaq_trigger = False&amp;#10;                break&amp;#10;            core.wait(0.01)  # Small delay to prevent CPU overload&amp;#10;" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="import nidaqmx&amp;#10;from psychopy import core&amp;#10;import time&amp;#10;&amp;#10;nidaq_trigger = False&amp;#10;&amp;#10;# Function to wait for trigger signal&amp;#10;def wait_for_trigger():&amp;#10;    # Define NI-DAQmx task&amp;#10;    with nidaqmx.Task() as task: &amp;#10;        # Configure the task to listen for a digital input signal on a specific port and line&amp;#10;        task.di_channels.add_di_chan(&quot;Dev1/port2/line0&quot;)&amp;#10;    &amp;#10;        print(&quot;Waiting for trigger signal...&quot;)&amp;#10;        while True:&amp;#10;            signal = task.read()&amp;#10;            if signal:  # Assuming the trigger signal is a digital high (True) signal&amp;#10;                print(&quot;Trigger signal received!&quot;)&amp;#10;                nidaq_trigger = False&amp;#10;                break&amp;#10;            core.wait(0.01)  # Small delay to prevent CPU overload&amp;#10;&amp;#10;def trigger_start():&amp;#10;    with nidaqmx.Task() as task:&amp;#10;        task.do_channels.add_do_chan(&quot;Dev1/port2/line0&quot;)&amp;#10;        task.write(True)&amp;#10;        time.sleep(0.1)&amp;#10;        task.write(False)" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="wait_for_trigger();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="wait_for_trigger()" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="#wait_for_trigger()" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="## Check the condition each frame&amp;#10;#with nidaqmx.Task() as nidaq: &amp;#10;#    # Configure the task to listen for a digital input signal on a specific port and line&amp;#10;#    nidaq.di_channels.add_di_chan(&quot;Dev1/port2/line0&quot;)&amp;#10;#    print(&quot;Waiting for trigger signal...&quot;)&amp;#10;#    &amp;#10;#    nidaq_trigger = nidaq.read()&amp;#10;#    &amp;#10;#    if nidaq_trigger:&amp;#10;#        continueRoutine = False  # Ends the routine if the condition is met&amp;#10;#" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="trigger_start();&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="trigger_start()&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="code__nidaq_trigger" valType="code" updates="None" name="name"/>
       </CodeComponent>
+      <KeyboardComponent name="key_resp_start" plugin="None">
+        <Param val="'y','n','left','right','space'" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="" valType="str" updates="constant" name="correctAns"/>
+        <Param val="" valType="str" updates="None" name="deviceLabel"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="True" valType="bool" updates="constant" name="discard previous"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="True" valType="bool" updates="constant" name="forceEndRoutine"/>
+        <Param val="key_resp_start" valType="code" updates="None" name="name"/>
+        <Param val="press" valType="str" updates="constant" name="registerOn"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="last key" valType="str" updates="constant" name="store"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="nidaqSynch">
       <RoutineSettingsComponent name="nidaqSynch" plugin="None">
