@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 15, 2024, at 18:24
+    on July 16, 2024, at 23:33
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,12 +33,69 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from code_generate_grating_angles
+# Run 'Before Experiment' code from generate_grating_angles
 import random
 
 
 grating_angles_array = [0, 45, 90, 135, 180, 225, 270, 315]
 
+# Run 'Before Experiment' code from read_encoder
+"""jgronemeyer 2024 custom code block"""
+import serial
+import time
+import pandas as pd
+import os
+import threading
+
+
+# Constants
+WHEEL_DIAMETER = 0.2  # in meters, example value
+ENCODER_CPR = 1000    # encoder counts per revolution
+SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window
+SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data
+PORT = 'COM3'
+
+# Set up the serial port connection to arduino
+arduino = serial.Serial(port='COM3', baudrate=57600, timeout=1)
+
+# Initialize DataFrame to store encoder data
+columns = ['timestamp', 'speed', 'distance', 'direction']
+encoder_data = pd.DataFrame(columns=columns)
+
+# Shared variable for clicks (raw value received from encoder)
+clicks_lock = threading.Lock() #thread locked for synchronization
+shared_clicks = 0 #cross-thread accessible variable
+
+def read_encoder():
+    global shared_clicks
+    while True:
+        try:
+            data = arduino.readline().decode('utf-8').strip()
+            if data:
+                with clicks_lock:
+                    shared_clicks = int(data)
+        except ValueError:
+            pass
+
+#NOTE: time_interval value should use PsychoPy's core.Clock() 
+def calculate_metrics(clicks, time_interval):
+    rotations = clicks / ENCODER_CPR
+    distance = rotations * (3.1416 * WHEEL_DIAMETER)
+    speed = distance / time_interval  # m/s
+    return speed, distance
+
+def determine_direction(clicks):
+    if clicks == 0:
+        return 0  # Stationary
+    elif clicks > 0:
+        return 1  # Forward
+    else:
+        return 2  # Backward
+
+def save_data(timestamp, speed, distance, direction):
+    global encoder_data
+    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)
+    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)
 # --- Setup global variables (available in all functions) ---
 # create a device manager to handle hardware (keyboards, mice, mirophones, speakers, etc.)
 deviceManager = hardware.DeviceManager()
@@ -139,7 +196,7 @@ def setupData(expInfo, dataDir=None):
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
         originPath='C:\\dev\\sipefield-gratings\\PsychoPy\\PsychoPy_visual_stimulus\\Gratings_vis_devJG_v0.4.py',
-        savePickle=True, saveWideText=True,
+        savePickle=True, saveWideText=False,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
     thisExp.setPriority('thisRow.t', priority.CRITICAL)
@@ -258,6 +315,12 @@ def setupDevices(expInfo, thisExp, win):
         deviceManager.addDevice(
             deviceClass='keyboard', deviceName='defaultKeyboard', backend='iohub'
         )
+    if deviceManager.getDevice('key_resp') is None:
+        # initialise key_resp
+        key_resp = deviceManager.addDevice(
+            deviceClass='keyboard',
+            deviceName='key_resp',
+        )
     # return True if completed successfully
     return True
 
@@ -359,8 +422,18 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # Start Code - component code to be run after the window creation
     
+    # --- Initialize components for Routine "nidaqTrigger" ---
+    text_waiting_message = visual.TextStim(win=win, name='text_waiting_message',
+        text='Waiting for NIDAQ trigger to begin visual stim...',
+        font='Arial',
+        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=0.0);
+    key_resp = keyboard.Keyboard(deviceName='key_resp')
+    
     # --- Initialize components for Routine "display_gratings" ---
-    # Run 'Begin Experiment' code from code_generate_grating_angles
+    # Run 'Begin Experiment' code from generate_grating_angles
     grating_index = 0
     stim_grayScreen = visual.ImageStim(
         win=win,
@@ -377,6 +450,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color=[1,1,1], colorSpace='rgb',
         opacity=2.0, contrast=1.0, blendmode='avg',
         texRes=256.0, interpolate=True, depth=-2.0)
+    # Run 'Begin Experiment' code from read_encoder
+    """jgronemeyer 2024 custom code block"""
+    total_distance = 0
+    prev_time = core.getTime()
+    
+    # Start the encoder reading thread
+    encoder_thread = threading.Thread(target=read_encoder, daemon=True)
+    encoder_thread.start()
     
     # create some handy timers
     
@@ -406,8 +487,125 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         format='%Y-%m-%d %Hh%M.%S.%f %z', fractionalSecondDigits=6
     )
     
+    # --- Prepare to start Routine "nidaqTrigger" ---
+    continueRoutine = True
+    # update component parameters for each repeat
+    thisExp.addData('nidaqTrigger.started', globalClock.getTime(format='float'))
+    # create starting attributes for key_resp
+    key_resp.keys = []
+    key_resp.rt = []
+    _key_resp_allKeys = []
+    # keep track of which components have finished
+    nidaqTriggerComponents = [text_waiting_message, key_resp]
+    for thisComponent in nidaqTriggerComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "nidaqTrigger" ---
+    routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *text_waiting_message* updates
+        
+        # if text_waiting_message is starting this frame...
+        if text_waiting_message.status == NOT_STARTED and frameN >= 0:
+            # keep track of start time/frame for later
+            text_waiting_message.frameNStart = frameN  # exact frame index
+            text_waiting_message.tStart = t  # local t and not account for scr refresh
+            text_waiting_message.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text_waiting_message, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'text_waiting_message.started')
+            # update status
+            text_waiting_message.status = STARTED
+            text_waiting_message.setAutoDraw(True)
+        
+        # if text_waiting_message is active this frame...
+        if text_waiting_message.status == STARTED:
+            # update params
+            pass
+        
+        # *key_resp* updates
+        waitOnFlip = False
+        
+        # if key_resp is starting this frame...
+        if key_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            key_resp.frameNStart = frameN  # exact frame index
+            key_resp.tStart = t  # local t and not account for scr refresh
+            key_resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'key_resp.started')
+            # update status
+            key_resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if key_resp.status == STARTED and not waitOnFlip:
+            theseKeys = key_resp.getKeys(keyList=['y','n','left','right','space'], ignoreKeys=["escape"], waitRelease=False)
+            _key_resp_allKeys.extend(theseKeys)
+            if len(_key_resp_allKeys):
+                key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+                key_resp.rt = _key_resp_allKeys[-1].rt
+                key_resp.duration = _key_resp_allKeys[-1].duration
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if defaultKeyboard.getKeys(keyList=["escape"]):
+            thisExp.status = FINISHED
+        if thisExp.status == FINISHED or endExpNow:
+            endExperiment(thisExp, win=win)
+            return
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in nidaqTriggerComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "nidaqTrigger" ---
+    for thisComponent in nidaqTriggerComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    thisExp.addData('nidaqTrigger.stopped', globalClock.getTime(format='float'))
+    # check responses
+    if key_resp.keys in ['', [], None]:  # No response was made
+        key_resp.keys = None
+    thisExp.addData('key_resp.keys',key_resp.keys)
+    if key_resp.keys != None:  # we had a response
+        thisExp.addData('key_resp.rt', key_resp.rt)
+        thisExp.addData('key_resp.duration', key_resp.duration)
+    thisExp.nextEntry()
+    # the Routine "nidaqTrigger" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
     # set up handler to look after randomisation of conditions etc
-    trials = data.TrialHandler(nReps=10.0, method='sequential', 
+    trials = data.TrialHandler(nReps=3.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='trials')
@@ -438,7 +636,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('display_gratings.started', globalClock.getTime(format='float'))
-        # Run 'Begin Routine' code from code_generate_grating_angles
+        # Run 'Begin Routine' code from generate_grating_angles
         #grating_angle = random.choice(grating_angles_array)
         
         print("!!!!! Start of routine angle index:", grating_index)
@@ -544,6 +742,27 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # update status
                     stim_grating.status = FINISHED
                     stim_grating.setAutoDraw(False)
+            # Run 'Each Frame' code from read_encoder
+            """jgronemeyer 2024 custom code block"""
+            
+            current_time = core.getTime()
+            time_interval = current_time - prev_time
+            #Time must have passed to collect encoder clicks
+            if time_interval >= SAMPLE_WINDOW:
+                with clicks_lock:
+                    clicks = shared_clicks
+            
+                speed, distance = calculate_metrics(clicks, time_interval)
+                total_distance += distance
+                direction = determine_direction(clicks)
+            
+                timestamp = current_time
+                save_data(timestamp, speed, total_distance, direction)
+                
+                #comment out/in for debugging
+                print(f"Time: {timestamp:.2f}s, Speed: {speed:.2f} m/s, Total Distance: {total_distance:.2f} m, Direction: {direction}")
+            
+                prev_time = current_time
             
             # check for quit (typically the Esc key)
             if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -571,6 +790,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         thisExp.addData('display_gratings.stopped', globalClock.getTime(format='float'))
+        # Run 'End Routine' code from read_encoder
+        #save the dataframe trial by trial
+        thisExp.addData('encoder_data', encoder_data)
+        
+        #TODO: instantiate new dataframe at beginning of each
+        #routine. Currently, this just incrementally appends
+        #resulting in duplicate data. 
+        
+        #For now, data is exported separately on End Experiment
+        #in a .csv
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if routineForceEnded:
             routineTimer.reset()
@@ -581,7 +810,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-    # completed 10.0 repeats of 'trials'
+    # completed 3.0 repeats of 'trials'
     
     # get names of stimulus parameters
     if trials.trialList in ([], [None], None):
@@ -592,9 +821,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     trials.saveAsExcel(filename + '.xlsx', sheetName='trials',
         stimOut=params,
         dataOut=['n','all_mean','all_std', 'all_raw'])
-    trials.saveAsText(filename + 'trials.csv', delim=',',
-        stimOut=params,
-        dataOut=['n','all_mean','all_std', 'all_raw'])
+    # Run 'End Experiment' code from read_encoder
+    #Export encoder_data to .csv file
+    
+    os.makedirs(SAVE_DIR, exist_ok=True)
+    filename = os.path.join(SAVE_DIR, (expInfo['Subject ID'], expName, expInfo['date']), f".csv")
+    encoder_data.to_csv(filename)
+    
+    
     
     # mark experiment as finished
     endExperiment(thisExp, win=win)
@@ -612,7 +846,6 @@ def saveData(thisExp):
     """
     filename = thisExp.dataFileName
     # these shouldn't be strictly necessary (should auto-save)
-    thisExp.saveAsWideText(filename + '.csv', delim='comma')
     thisExp.saveAsPickle(filename)
 
 

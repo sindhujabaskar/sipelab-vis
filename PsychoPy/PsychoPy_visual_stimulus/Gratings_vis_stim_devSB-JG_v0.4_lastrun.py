@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 16, 2024, at 14:14
+    on July 17, 2024, at 00:06
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,44 +33,69 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from code__nidaq_trigger
-import nidaqmx
-from psychopy import core
-import time
-
-nidaq_trigger = False
-
-# Function to wait for trigger signal
-def wait_for_trigger():
-    # Define NI-DAQmx task
-    with nidaqmx.Task() as task: 
-        # Configure the task to listen for a digital input signal on a specific port and line
-        task.di_channels.add_di_chan("Dev1/port2/line0")
-    
-        print("Waiting for trigger signal...")
-        while True:
-            signal = task.read()
-            if signal:  # Assuming the trigger signal is a digital high (True) signal
-                print("Trigger signal received!")
-                nidaq_trigger = False
-                break
-            core.wait(0.01)  # Small delay to prevent CPU overload
-
-def trigger_start():
-    with nidaqmx.Task() as task:
-        task.do_channels.add_do_chan("Dev1/port2/line0")
-        task.write(True)
-        time.sleep(0.1)
-        task.write(False)
-# Run 'Before Experiment' code from code_generate_grating_angles
+# Run 'Before Experiment' code from generate_grating_angles
 import random
 
 
 grating_angles_array = [0, 45, 90, 135, 180, 225, 270, 315]
 
-# Run 'Before Experiment' code from code_read_encoder
-arduino_port = 'COM3'
-encoder_radius = 2.75
+# Run 'Before Experiment' code from read_encoder
+"""jgronemeyer 2024 custom code block"""
+import serial
+import time
+import pandas as pd
+import os
+import threading
+
+
+# Constants
+WHEEL_DIAMETER = 0.2  # in meters, example value
+ENCODER_CPR = 1000    # encoder counts per revolution
+SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window
+SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data
+PORT = 'COM3'
+
+# Set up the serial port connection to arduino
+arduino = serial.Serial(port='COM3', baudrate=57600, timeout=1)
+
+# Initialize DataFrame to store encoder data
+columns = ['timestamp', 'speed', 'distance', 'direction']
+encoder_data = pd.DataFrame(columns=columns)
+
+# Shared variable for clicks (raw value received from encoder)
+clicks_lock = threading.Lock() #thread locked for synchronization
+shared_clicks = 0 #cross-thread accessible variable
+
+def read_encoder():
+    global shared_clicks
+    while True:
+        try:
+            data = arduino.readline().decode('utf-8').strip()
+            if data:
+                with clicks_lock:
+                    shared_clicks = int(data)
+        except ValueError:
+            pass
+
+#NOTE: time_interval value should use PsychoPy's core.Clock() 
+def calculate_metrics(clicks, time_interval):
+    rotations = clicks / ENCODER_CPR
+    distance = rotations * (3.1416 * WHEEL_DIAMETER)
+    speed = distance / time_interval  # m/s
+    return speed, distance
+
+def determine_direction(clicks):
+    if clicks == 0:
+        return 0  # Stationary
+    elif clicks > 0:
+        return 1  # Forward
+    else:
+        return 2  # Backward
+
+def save_data(timestamp, speed, distance, direction):
+    global encoder_data
+    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)
+    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)
 # --- Setup global variables (available in all functions) ---
 # create a device manager to handle hardware (keyboards, mice, mirophones, speakers, etc.)
 deviceManager = hardware.DeviceManager()
@@ -171,7 +196,7 @@ def setupData(expInfo, dataDir=None):
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
         originPath='C:\\dev\\sipefield-gratings\\PsychoPy\\PsychoPy_visual_stimulus\\Gratings_vis_stim_devSB-JG_v0.4_lastrun.py',
-        savePickle=True, saveWideText=True,
+        savePickle=True, saveWideText=False,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
     thisExp.setPriority('thisRow.t', priority.CRITICAL)
@@ -290,11 +315,11 @@ def setupDevices(expInfo, thisExp, win):
         deviceManager.addDevice(
             deviceClass='keyboard', deviceName='defaultKeyboard', backend='iohub'
         )
-    if deviceManager.getDevice('key_resp_start') is None:
-        # initialise key_resp_start
-        key_resp_start = deviceManager.addDevice(
+    if deviceManager.getDevice('key_resp') is None:
+        # initialise key_resp
+        key_resp = deviceManager.addDevice(
             deviceClass='keyboard',
-            deviceName='key_resp_start',
+            deviceName='key_resp',
         )
     # return True if completed successfully
     return True
@@ -405,10 +430,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
-    key_resp_start = keyboard.Keyboard(deviceName='key_resp_start')
+    key_resp = keyboard.Keyboard(deviceName='key_resp')
     
     # --- Initialize components for Routine "display_gratings" ---
-    # Run 'Begin Experiment' code from code_generate_grating_angles
+    # Run 'Begin Experiment' code from generate_grating_angles
     grating_index = 0
     stim_grayScreen = visual.ImageStim(
         win=win,
@@ -425,38 +450,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color=[1,1,1], colorSpace='rgb',
         opacity=2.0, contrast=1.0, blendmode='avg',
         texRes=256.0, interpolate=True, depth=-2.0)
-    # Run 'Begin Experiment' code from code_read_encoder
-    import serial
-    import time
+    # Run 'Begin Experiment' code from read_encoder
+    """jgronemeyer 2024 custom code block"""
+    total_distance = 0
+    prev_time = core.getTime()
     
-    class Encoder:
-        def __init__(self, port, baud_rate=9600, radius=2.75, sampling_rate_hz=20):
-            self.port = port
-            self.baud_rate = baud_rate
-            self.radius = radius
-            self.sampling_rate_hz = sampling_rate_hz
-            self.sampling_interval = 1.0 / sampling_rate_hz
-            self.ser = serial.Serial(self.port, self.baud_rate, timeout=1)
-            time.sleep(2)  # Wait for the serial connection to initialize
-    
-        def read_data(self):
-            if self.ser.in_waiting > 0:
-                line = self.ser.readline().decode('utf-8').strip()
-                if line:
-                    try:
-                        total_distance = float(line)
-                        return total_distance
-                    except ValueError:
-                        return None  # Ignore lines that can't be converted to float
-            return None
-    
-        def close(self):
-            self.ser.close()
-            print("Serial connection closed.")
-    
-    # Initialize the encoder object
-    encoder = Encoder(port=arduino_port, baud_rate=9600, radius=encoder_radius, sampling_rate_hz=20)
-    
+    # Start the encoder reading thread
+    encoder_thread = threading.Thread(target=read_encoder, daemon=True)
+    encoder_thread.start()
     
     # create some handy timers
     
@@ -490,14 +491,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('nidaqTrigger.started', globalClock.getTime(format='float'))
-    # Run 'Begin Routine' code from code__nidaq_trigger
-    #wait_for_trigger()
-    # create starting attributes for key_resp_start
-    key_resp_start.keys = []
-    key_resp_start.rt = []
-    _key_resp_start_allKeys = []
+    # create starting attributes for key_resp
+    key_resp.keys = []
+    key_resp.rt = []
+    _key_resp_allKeys = []
     # keep track of which components have finished
-    nidaqTriggerComponents = [text_waiting_message, key_resp_start]
+    nidaqTriggerComponents = [text_waiting_message, key_resp]
     for thisComponent in nidaqTriggerComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -539,44 +538,32 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if text_waiting_message.status == STARTED:
             # update params
             pass
-        # Run 'Each Frame' code from code__nidaq_trigger
-        ## Check the condition each frame
-        #with nidaqmx.Task() as nidaq: 
-        #    # Configure the task to listen for a digital input signal on a specific port and line
-        #    nidaq.di_channels.add_di_chan("Dev1/port2/line0")
-        #    print("Waiting for trigger signal...")
-        #    
-        #    nidaq_trigger = nidaq.read()
-        #    
-        #    if nidaq_trigger:
-        #        continueRoutine = False  # Ends the routine if the condition is met
-        #
         
-        # *key_resp_start* updates
+        # *key_resp* updates
         waitOnFlip = False
         
-        # if key_resp_start is starting this frame...
-        if key_resp_start.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if key_resp is starting this frame...
+        if key_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            key_resp_start.frameNStart = frameN  # exact frame index
-            key_resp_start.tStart = t  # local t and not account for scr refresh
-            key_resp_start.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(key_resp_start, 'tStartRefresh')  # time at next scr refresh
+            key_resp.frameNStart = frameN  # exact frame index
+            key_resp.tStart = t  # local t and not account for scr refresh
+            key_resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'key_resp_start.started')
+            thisExp.timestampOnFlip(win, 'key_resp.started')
             # update status
-            key_resp_start.status = STARTED
+            key_resp.status = STARTED
             # keyboard checking is just starting
             waitOnFlip = True
-            win.callOnFlip(key_resp_start.clock.reset)  # t=0 on next screen flip
-            win.callOnFlip(key_resp_start.clearEvents, eventType='keyboard')  # clear events on next screen flip
-        if key_resp_start.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp_start.getKeys(keyList=['y','n','left','right','space'], ignoreKeys=["escape"], waitRelease=False)
-            _key_resp_start_allKeys.extend(theseKeys)
-            if len(_key_resp_start_allKeys):
-                key_resp_start.keys = _key_resp_start_allKeys[-1].name  # just the last key pressed
-                key_resp_start.rt = _key_resp_start_allKeys[-1].rt
-                key_resp_start.duration = _key_resp_start_allKeys[-1].duration
+            win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if key_resp.status == STARTED and not waitOnFlip:
+            theseKeys = key_resp.getKeys(keyList=['y','n','left','right','space'], ignoreKeys=["escape"], waitRelease=False)
+            _key_resp_allKeys.extend(theseKeys)
+            if len(_key_resp_allKeys):
+                key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+                key_resp.rt = _key_resp_allKeys[-1].rt
+                key_resp.duration = _key_resp_allKeys[-1].duration
                 # a response ends the routine
                 continueRoutine = False
         
@@ -606,22 +593,19 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('nidaqTrigger.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code__nidaq_trigger
-    trigger_start()
-    
     # check responses
-    if key_resp_start.keys in ['', [], None]:  # No response was made
-        key_resp_start.keys = None
-    thisExp.addData('key_resp_start.keys',key_resp_start.keys)
-    if key_resp_start.keys != None:  # we had a response
-        thisExp.addData('key_resp_start.rt', key_resp_start.rt)
-        thisExp.addData('key_resp_start.duration', key_resp_start.duration)
+    if key_resp.keys in ['', [], None]:  # No response was made
+        key_resp.keys = None
+    thisExp.addData('key_resp.keys',key_resp.keys)
+    if key_resp.keys != None:  # we had a response
+        thisExp.addData('key_resp.rt', key_resp.rt)
+        thisExp.addData('key_resp.duration', key_resp.duration)
     thisExp.nextEntry()
     # the Routine "nidaqTrigger" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
-    trials = data.TrialHandler(nReps=10.0, method='sequential', 
+    trials = data.TrialHandler(nReps=1.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
         trialList=[None],
         seed=None, name='trials')
@@ -652,7 +636,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         thisExp.addData('display_gratings.started', globalClock.getTime(format='float'))
-        # Run 'Begin Routine' code from code_generate_grating_angles
+        # Run 'Begin Routine' code from generate_grating_angles
         #grating_angle = random.choice(grating_angles_array)
         
         print("!!!!! Start of routine angle index:", grating_index)
@@ -669,10 +653,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             #print("if statement: index reset")
         
         stim_grating.setOri(grating_angle)
-        # Run 'Begin Routine' code from code_read_encoder
-        # Start recording data
-        recorded_data = []
-        
         # keep track of which components have finished
         display_gratingsComponents = [stim_grayScreen, stim_grating]
         for thisComponent in display_gratingsComponents:
@@ -762,14 +742,27 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # update status
                     stim_grating.status = FINISHED
                     stim_grating.setAutoDraw(False)
-            # Run 'Each Frame' code from code_read_encoder
-            # Read data during the routine
-            distance = encoder.read_data()
-            if distance is not None:
-                recorded_data.append(distance)
-                print(f"Total Distance: {distance} inches")
-            time.sleep(encoder.sampling_interval)
+            # Run 'Each Frame' code from read_encoder
+            """jgronemeyer 2024 custom code block"""
             
+            current_time = core.getTime()
+            time_interval = current_time - prev_time
+            #Time must have passed to collect encoder clicks
+            if time_interval >= SAMPLE_WINDOW:
+                with clicks_lock:
+                    clicks = shared_clicks
+            
+                speed, distance = calculate_metrics(clicks, time_interval)
+                total_distance += distance
+                direction = determine_direction(clicks)
+            
+                timestamp = current_time
+                save_data(timestamp, speed, total_distance, direction)
+                
+                #comment out/in for debugging
+                print(f"Time: {timestamp:.2f}s, Speed: {speed:.2f} m/s, Total Distance: {total_distance:.2f} m, Direction: {direction}")
+            
+                prev_time = current_time
             
             # check for quit (typically the Esc key)
             if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -797,6 +790,16 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         thisExp.addData('display_gratings.stopped', globalClock.getTime(format='float'))
+        # Run 'End Routine' code from read_encoder
+        #save the dataframe trial by trial
+        thisExp.addData('encoder_data', encoder_data)
+        
+        #TODO: instantiate new dataframe at beginning of each
+        #routine. Currently, this just incrementally appends
+        #resulting in duplicate data. 
+        
+        #For now, data is exported separately on End Experiment
+        #in a .csv
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if routineForceEnded:
             routineTimer.reset()
@@ -807,7 +810,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if thisSession is not None:
             # if running in a Session with a Liaison client, send data up to now
             thisSession.sendExperimentData()
-    # completed 10.0 repeats of 'trials'
+    # completed 1.0 repeats of 'trials'
     
     # get names of stimulus parameters
     if trials.trialList in ([], [None], None):
@@ -818,16 +821,19 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     trials.saveAsExcel(filename + '.xlsx', sheetName='trials',
         stimOut=params,
         dataOut=['n','all_mean','all_std', 'all_raw'])
-    trials.saveAsText(filename + 'trials.csv', delim=',',
-        stimOut=params,
-        dataOut=['n','all_mean','all_std', 'all_raw'])
-    # Run 'End Experiment' code from code_read_encoder
-    # Save data to PsychoPy's data output
-    thisExp.addData('encoder_data', recorded_data)
+    # Run 'End Experiment' code from read_encoder
+    #Export encoder_data to .csv file
+    filename = u'data/encoder/%s_%s' % (expInfo['Subject ID'], expInfo['date'])
+    #os.makedirs(SAVE_DIR, exist_ok=True)
+    new_dir = os.path.join(_thisDir, filename)
     
-    # Close the serial connection
-    encoder.close()
-    print("Data recording complete.")
+    if not os.path.exists(new_dir):
+        os.makedirs(new_dir)
+        
+    filename = os.path.join(new_dir, f"encoder_data.csv")
+    
+    encoder_data.to_csv(filename, index=False)
+    
     
     
     # mark experiment as finished
@@ -846,7 +852,6 @@ def saveData(thisExp):
     """
     filename = thisExp.dataFileName
     # these shouldn't be strictly necessary (should auto-save)
-    thisExp.saveAsWideText(filename + '.csv', delim='comma')
     thisExp.saveAsPickle(filename)
 
 
