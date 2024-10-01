@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" ?>
-<PsychoPy2experiment encoding="utf-8" version="2024.1.5">
+<PsychoPy2experiment encoding="utf-8" version="2024.2.1post4">
   <Settings>
     <Param val="3" valType="str" updates="None" name="Audio latency priority"/>
     <Param val="ptb" valType="str" updates="None" name="Audio lib"/>
@@ -17,13 +17,13 @@
     <Param val="[]" valType="list" updates="None" name="Resources"/>
     <Param val="True" valType="bool" updates="None" name="Save csv file"/>
     <Param val="True" valType="bool" updates="None" name="Save excel file"/>
-    <Param val="False" valType="bool" updates="None" name="Save hdf5 file"/>
+    <Param val="True" valType="bool" updates="None" name="Save hdf5 file"/>
     <Param val="False" valType="bool" updates="None" name="Save log file"/>
     <Param val="True" valType="bool" updates="None" name="Save psydat file"/>
     <Param val="True" valType="bool" updates="None" name="Save wide csv file"/>
-    <Param val="2" valType="num" updates="None" name="Screen"/>
+    <Param val="3" valType="num" updates="None" name="Screen"/>
     <Param val="True" valType="bool" updates="None" name="Show info dlg"/>
-    <Param val="False" valType="bool" updates="None" name="Show mouse"/>
+    <Param val="True" valType="bool" updates="None" name="Show mouse"/>
     <Param val="height" valType="str" updates="None" name="Units"/>
     <Param val="" valType="str" updates="None" name="Use version"/>
     <Param val="[1920, 1080]" valType="list" updates="None" name="Window size (pixels)"/>
@@ -34,6 +34,8 @@
     <Param val="{'thisRow.t': 'priority.CRITICAL', 'expName': 'priority.LOW'}" valType="dict" updates="None" name="colPriority"/>
     <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
     <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+    <Param val="warning" valType="code" updates="None" name="consoleLoggingLevel"/>
+    <Param val="default" valType="str" updates="None" name="ecSampleRate"/>
     <Param val="100.1.1.1" valType="str" updates="None" name="elAddress"/>
     <Param val="FILTER_LEVEL_2" valType="str" updates="None" name="elDataFiltering"/>
     <Param val="FILTER_LEVEL_OFF" valType="str" updates="None" name="elLiveFiltering"/>
@@ -68,7 +70,7 @@
     <Param val="1000" valType="num" updates="None" name="plPupilRemoteTimeoutMs"/>
     <Param val="False" valType="bool" updates="None" name="plPupillometryOnly"/>
     <Param val="psychopy_iohub_surface" valType="str" updates="None" name="plSurfaceName"/>
-    <Param val="0" valType="code" updates="None" name="runMode"/>
+    <Param val="1" valType="code" updates="None" name="runMode"/>
     <Param val="False" valType="bool" updates="None" name="rush"/>
     <Param val="time" valType="str" updates="None" name="sortColumns"/>
     <Param val="" valType="str" updates="None" name="tbLicenseFile"/>
@@ -87,6 +89,7 @@
         <Param val="" valType="str" updates="constant" name="desc"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="display_gratings" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="constant" name="skipIf"/>
@@ -117,6 +120,7 @@
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
         <Param val="3" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="bool" updates="constant" name="flipHoriz"/>
         <Param val="False" valType="bool" updates="constant" name="flipVert"/>
@@ -146,6 +150,7 @@
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1.0" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
         <Param val="2" valType="code" updates="None" name="durationEstim"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
         <Param val="" valType="file" updates="constant" name="mask"/>
@@ -186,7 +191,7 @@
         <Param val="code_nidaq_sync_pulse_2" valType="code" updates="None" name="name"/>
       </CodeComponent>
       <CodeComponent name="read_encoder" plugin="None">
-        <Param val="&quot;&quot;&quot;jgronemeyer 2024 custom code block&quot;&quot;&quot;&amp;#10;import serial&amp;#10;import time&amp;#10;from datetime import datetime # for BIDS saving&amp;#10;import pandas as pd&amp;#10;import os&amp;#10;import threading&amp;#10;&amp;#10;# For BIDS file saving&amp;#10;timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)&amp;#10;&amp;#10;&amp;#10;# Constants&amp;#10;WHEEL_DIAMETER = 0.2  # in meters, example value&amp;#10;ENCODER_CPR = 1000    # encoder counts per revolution&amp;#10;SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window&amp;#10;SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data&amp;#10;PORT = 'COM3'&amp;#10;&amp;#10;# Set up the serial port connection to arduino&amp;#10;arduino = serial.Serial(port='COM3', baudrate=57600, timeout=1)&amp;#10;&amp;#10;# Initialize DataFrame to store encoder data&amp;#10;columns = ['timestamp', 'speed', 'distance', 'direction']&amp;#10;encoder_data = pd.DataFrame(columns=columns)&amp;#10;&amp;#10;# Shared variable for clicks (raw value received from encoder)&amp;#10;clicks_lock = threading.Lock() #thread locked for synchronization&amp;#10;shared_clicks = 0 #cross-thread accessible variable&amp;#10;&amp;#10;def read_encoder():&amp;#10;    global shared_clicks&amp;#10;    while True:&amp;#10;        try:&amp;#10;            data = arduino.readline().decode('utf-8').strip()&amp;#10;            if data:&amp;#10;                with clicks_lock:&amp;#10;                    shared_clicks = int(data)&amp;#10;        except ValueError:&amp;#10;            pass&amp;#10;&amp;#10;#NOTE: time_interval value should use PsychoPy's core.Clock() &amp;#10;def calculate_metrics(clicks, time_interval):&amp;#10;    rotations = clicks / ENCODER_CPR&amp;#10;    distance = rotations * (3.1416 * WHEEL_DIAMETER)&amp;#10;    speed = distance / time_interval  # m/s&amp;#10;    return speed, distance&amp;#10;&amp;#10;def determine_direction(clicks):&amp;#10;    if clicks == 0:&amp;#10;        return 0  # Stationary&amp;#10;    elif clicks &gt; 0:&amp;#10;        return 1  # Forward&amp;#10;    else:&amp;#10;        return 2  # Backward&amp;#10;&amp;#10;def save_data(timestamp, speed, distance, direction):&amp;#10;    global encoder_data&amp;#10;    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)&amp;#10;    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="&quot;&quot;&quot;jgronemeyer 2024 custom code block&quot;&quot;&quot;&amp;#10;import serial&amp;#10;import time&amp;#10;from datetime import datetime # for BIDS saving&amp;#10;import pandas as pd&amp;#10;import os&amp;#10;import threading&amp;#10;&amp;#10;# For BIDS file saving&amp;#10;timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)&amp;#10;&amp;#10;&amp;#10;# Constants&amp;#10;WHEEL_DIAMETER = 0.2  # in meters, example value&amp;#10;ENCODER_CPR = 1000    # encoder counts per revolution&amp;#10;SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window&amp;#10;SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data&amp;#10;PORT = 'COM4'&amp;#10;&amp;#10;# Set up the serial port connection to arduino&amp;#10;arduino = serial.Serial(port=PORT, baudrate=57600, timeout=1)&amp;#10;&amp;#10;# Initialize DataFrame to store encoder data&amp;#10;columns = ['timestamp', 'speed', 'distance', 'direction']&amp;#10;encoder_data = pd.DataFrame(columns=columns)&amp;#10;&amp;#10;# Shared variable for clicks (raw value received from encoder)&amp;#10;clicks_lock = threading.Lock() #thread locked for synchronization&amp;#10;shared_clicks = 0 #cross-thread accessible variable&amp;#10;&amp;#10;def read_encoder():&amp;#10;    global shared_clicks&amp;#10;    while True:&amp;#10;        try:&amp;#10;            data = arduino.readline().decode('utf-8').strip()&amp;#10;            if data:&amp;#10;                with clicks_lock:&amp;#10;                    shared_clicks = int(data)&amp;#10;        except ValueError:&amp;#10;            pass&amp;#10;&amp;#10;#NOTE: time_interval value should use PsychoPy's core.Clock() &amp;#10;def calculate_metrics(clicks, time_interval):&amp;#10;    rotations = clicks / ENCODER_CPR&amp;#10;    distance = rotations * (3.1416 * WHEEL_DIAMETER)&amp;#10;    speed = distance / time_interval  # m/s&amp;#10;    return speed, distance&amp;#10;&amp;#10;def determine_direction(clicks):&amp;#10;    if clicks == 0:&amp;#10;        return 0  # Stationary&amp;#10;    elif clicks &gt; 0:&amp;#10;        return 1  # Forward&amp;#10;    else:&amp;#10;        return 2  # Backward&amp;#10;&amp;#10;def save_data(timestamp, speed, distance, direction):&amp;#10;    global encoder_data&amp;#10;    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)&amp;#10;    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="&quot;&quot;&quot;jgronemeyer 2024 custom code block&quot;&quot;&quot;&amp;#10;total_distance = 0&amp;#10;&amp;#10;&amp;#10;&amp;#10;# Start the encoder reading thread&amp;#10;encoder_thread = threading.Thread(target=read_encoder, daemon=True)&amp;#10;encoder_thread.start()" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="/* jgronemeyer 2024 custom code block */&amp;#10;total_distance = 0;&amp;#10;encoder_thread = new threading.Thread({&quot;target&quot;: read_encoder, &quot;daemon&quot;: true});&amp;#10;encoder_thread.start();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
@@ -212,6 +217,7 @@
         <Param val="" valType="str" updates="constant" name="desc"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="nidaqTrigger" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="constant" name="skipIf"/>
@@ -224,6 +230,7 @@
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
@@ -309,6 +316,7 @@
         <Param val="" valType="str" updates="constant" name="desc"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
         <Param val="nidaqSynch" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="constant" name="skipIf"/>
@@ -344,7 +352,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="3" valType="num"/>
+      <Param name="nReps" updates="None" val="50" valType="num"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
