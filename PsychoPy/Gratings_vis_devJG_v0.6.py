@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.2.1post4),
-    on September 11, 2024, at 16:47
+    on November 08, 2024, at 14:54
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,14 +33,33 @@ import sys  # to get file system encoding
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
-# Run 'Before Experiment' code from generate_grating_angles
-import random
-
-
-grating_angles_array = [0, 45, 90, 135, 180, 225, 270, 315]
-
-# Run 'Before Experiment' code from read_encoder
-"""jgronemeyer 2024 custom code block"""
+# Run 'Before Experiment' code from get_input_arguments
+#jgronemeyer custom scripting to add system argumetn functionality
+# Get command line arguments passed if present
+sysarg_protocol_id = None
+sysarg_subject_id = None
+sysarg_session_id = None
+sysarg_save_dir = None
+sysarg_nTrials = None # changed data.TrialHandler2 object value nReps value to call this variable
+if len(sys.argv) > 1:
+    sysarg_protocol_id = sys.argv[1]  # get the first argument from command line
+    sysarg_subject_id = sys.argv[2]  # get the second argument from command line
+    sysarg_session_id = sys.argv[3]  # get the third argument from command line
+    sysarg_save_dir = sys.argv[4]  # get the fourth argument from command line
+    nTrials = sys.argv[5] # get the fifth argument from the command line
+expName = sysarg_protocol_id
+    
+expInfo = {
+    'Protocol ID': expName,
+    'Subject ID': sysarg_subject_id,
+    'Session ID': sysarg_session_id,
+    'date|hid': data.getDateStr(),
+    'expName|hid': expName,
+    'psychopyVersion|hid': psychopyVersion,
+    'save directory': sysarg_save_dir
+}
+# Run 'Before Experiment' code from prepare_encoder
+#================== Custom Codeblock jgronemeyer ================#
 import serial
 import time
 from datetime import datetime # for BIDS saving
@@ -50,7 +69,6 @@ import threading
 
 # For BIDS file saving
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)
-
 
 # Constants
 WHEEL_DIAMETER = 0.2  # in meters, example value
@@ -100,6 +118,12 @@ def save_data(timestamp, speed, distance, direction):
     global encoder_data
     new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)
     encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)
+# Run 'Before Experiment' code from generate_grating_angles
+#================== Custom Codeblock jgronemeyer ================#
+import random
+
+grating_angles_array = [0, 45, 90, 135, 180, 225, 270, 315]
+
 # --- Setup global variables (available in all functions) ---
 # create a device manager to handle hardware (keyboards, mice, mirophones, speakers, etc.)
 deviceManager = hardware.DeviceManager()
@@ -430,9 +454,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # Start Code - component code to be run after the window creation
     
-    # --- Initialize components for Routine "nidaqTrigger" ---
+    # --- Initialize components for Routine "STDINPUT" ---
+    
+    # --- Initialize components for Routine "CustomTrigger" ---
     text_waiting_message = visual.TextStim(win=win, name='text_waiting_message',
-        text='Waiting for NIDAQ trigger to begin visual stim...',
+        text='Press the SPACEBAR to begin visual stim...',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -440,8 +466,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         depth=0.0);
     key_resp = keyboard.Keyboard(deviceName='key_resp')
     
-    # --- Initialize components for Routine "display_gratings" ---
+    # --- Initialize components for Routine "DisplayGratings" ---
     # Run 'Begin Experiment' code from generate_grating_angles
+    #================== Custom Codeblock jgronemeyer ================#
     grating_index = 0
     stim_grayScreen = visual.ImageStim(
         win=win,
@@ -459,14 +486,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=2.0, contrast=1.0, blendmode='avg',
         texRes=256.0, interpolate=True, depth=-2.0)
     # Run 'Begin Experiment' code from read_encoder
-    """jgronemeyer 2024 custom code block"""
+    #================== Custom Codeblock jgronemeyer ================#
     total_distance = 0
-    
-    
     
     # Start the encoder reading thread
     encoder_thread = threading.Thread(target=read_encoder, daemon=True)
     encoder_thread.start()
+    
+    # --- Initialize components for Routine "CustomSaving" ---
     
     # create some handy timers
     
@@ -496,28 +523,24 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         format='%Y-%m-%d %Hh%M.%S.%f %z', fractionalSecondDigits=6
     )
     
-    # --- Prepare to start Routine "nidaqTrigger" ---
-    # create an object to store info about Routine nidaqTrigger
-    nidaqTrigger = data.Routine(
-        name='nidaqTrigger',
-        components=[text_waiting_message, key_resp],
+    # --- Prepare to start Routine "STDINPUT" ---
+    # create an object to store info about Routine STDINPUT
+    STDINPUT = data.Routine(
+        name='STDINPUT',
+        components=[],
     )
-    nidaqTrigger.status = NOT_STARTED
+    STDINPUT.status = NOT_STARTED
     continueRoutine = True
     # update component parameters for each repeat
-    # create starting attributes for key_resp
-    key_resp.keys = []
-    key_resp.rt = []
-    _key_resp_allKeys = []
-    # store start times for nidaqTrigger
-    nidaqTrigger.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-    nidaqTrigger.tStart = globalClock.getTime(format='float')
-    nidaqTrigger.status = STARTED
-    thisExp.addData('nidaqTrigger.started', nidaqTrigger.tStart)
-    nidaqTrigger.maxDuration = None
+    # store start times for STDINPUT
+    STDINPUT.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+    STDINPUT.tStart = globalClock.getTime(format='float')
+    STDINPUT.status = STARTED
+    thisExp.addData('STDINPUT.started', STDINPUT.tStart)
+    STDINPUT.maxDuration = None
     # keep track of which components have finished
-    nidaqTriggerComponents = nidaqTrigger.components
-    for thisComponent in nidaqTrigger.components:
+    STDINPUTComponents = STDINPUT.components
+    for thisComponent in STDINPUT.components:
         thisComponent.tStart = None
         thisComponent.tStop = None
         thisComponent.tStartRefresh = None
@@ -529,8 +552,94 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     frameN = -1
     
-    # --- Run Routine "nidaqTrigger" ---
-    nidaqTrigger.forceEnded = routineForceEnded = not continueRoutine
+    # --- Run Routine "STDINPUT" ---
+    STDINPUT.forceEnded = routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if defaultKeyboard.getKeys(keyList=["escape"]):
+            thisExp.status = FINISHED
+        if thisExp.status == FINISHED or endExpNow:
+            endExperiment(thisExp, win=win)
+            return
+        # pause experiment here if requested
+        if thisExp.status == PAUSED:
+            pauseExperiment(
+                thisExp=thisExp, 
+                win=win, 
+                timers=[routineTimer], 
+                playbackComponents=[]
+            )
+            # skip the frame we paused on
+            continue
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            STDINPUT.forceEnded = routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in STDINPUT.components:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "STDINPUT" ---
+    for thisComponent in STDINPUT.components:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # store stop times for STDINPUT
+    STDINPUT.tStop = globalClock.getTime(format='float')
+    STDINPUT.tStopRefresh = tThisFlipGlobal
+    thisExp.addData('STDINPUT.stopped', STDINPUT.tStop)
+    thisExp.nextEntry()
+    # the Routine "STDINPUT" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # --- Prepare to start Routine "CustomTrigger" ---
+    # create an object to store info about Routine CustomTrigger
+    CustomTrigger = data.Routine(
+        name='CustomTrigger',
+        components=[text_waiting_message, key_resp],
+    )
+    CustomTrigger.status = NOT_STARTED
+    continueRoutine = True
+    # update component parameters for each repeat
+    # create starting attributes for key_resp
+    key_resp.keys = []
+    key_resp.rt = []
+    _key_resp_allKeys = []
+    # store start times for CustomTrigger
+    CustomTrigger.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+    CustomTrigger.tStart = globalClock.getTime(format='float')
+    CustomTrigger.status = STARTED
+    thisExp.addData('CustomTrigger.started', CustomTrigger.tStart)
+    CustomTrigger.maxDuration = None
+    # keep track of which components have finished
+    CustomTriggerComponents = CustomTrigger.components
+    for thisComponent in CustomTrigger.components:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "CustomTrigger" ---
+    CustomTrigger.forceEnded = routineForceEnded = not continueRoutine
     while continueRoutine:
         # get current time
         t = routineTimer.getTime()
@@ -606,10 +715,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
-            nidaqTrigger.forceEnded = routineForceEnded = True
+            CustomTrigger.forceEnded = routineForceEnded = True
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in nidaqTrigger.components:
+        for thisComponent in CustomTrigger.components:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -618,14 +727,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # --- Ending Routine "nidaqTrigger" ---
-    for thisComponent in nidaqTrigger.components:
+    # --- Ending Routine "CustomTrigger" ---
+    for thisComponent in CustomTrigger.components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    # store stop times for nidaqTrigger
-    nidaqTrigger.tStop = globalClock.getTime(format='float')
-    nidaqTrigger.tStopRefresh = tThisFlipGlobal
-    thisExp.addData('nidaqTrigger.stopped', nidaqTrigger.tStop)
+    # store stop times for CustomTrigger
+    CustomTrigger.tStop = globalClock.getTime(format='float')
+    CustomTrigger.tStopRefresh = tThisFlipGlobal
+    thisExp.addData('CustomTrigger.stopped', CustomTrigger.tStop)
     # check responses
     if key_resp.keys in ['', [], None]:  # No response was made
         key_resp.keys = None
@@ -634,13 +743,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('key_resp.rt', key_resp.rt)
         thisExp.addData('key_resp.duration', key_resp.duration)
     thisExp.nextEntry()
-    # the Routine "nidaqTrigger" was not non-slip safe, so reset the non-slip timer
+    # the Routine "CustomTrigger" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler2(
         name='trials',
-        nReps=50.0, 
+        nReps=nTrials, 
         method='sequential', 
         extraInfo=expInfo, 
         originPath=-1, 
@@ -668,21 +777,21 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             for paramName in thisTrial:
                 globals()[paramName] = thisTrial[paramName]
         
-        # --- Prepare to start Routine "display_gratings" ---
-        # create an object to store info about Routine display_gratings
-        display_gratings = data.Routine(
-            name='display_gratings',
+        # --- Prepare to start Routine "DisplayGratings" ---
+        # create an object to store info about Routine DisplayGratings
+        DisplayGratings = data.Routine(
+            name='DisplayGratings',
             components=[stim_grayScreen, stim_grating],
         )
-        display_gratings.status = NOT_STARTED
+        DisplayGratings.status = NOT_STARTED
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from generate_grating_angles
+        #================== Custom Codeblock jgronemeyer ================#
         #grating_angle = random.choice(grating_angles_array)
         
         print("!!!!! Start of routine angle index:", grating_index)
         
-            #print("2. else:", grating_index)
         grating_angle = grating_angles_array[grating_index]
         print("Displaying angle:", grating_angle, " with index: ", grating_index)
         grating_index += 1
@@ -695,19 +804,20 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
         stim_grating.setOri(grating_angle)
         # Run 'Begin Routine' code from read_encoder
+        #================== Custom Codeblock jgronemeyer ================#
         # This value provides the encoder thread with 
         #   the timestamp for the start of each Routine
         prev_time = core.getTime()
         
-        # store start times for display_gratings
-        display_gratings.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-        display_gratings.tStart = globalClock.getTime(format='float')
-        display_gratings.status = STARTED
-        thisExp.addData('display_gratings.started', display_gratings.tStart)
-        display_gratings.maxDuration = None
+        # store start times for DisplayGratings
+        DisplayGratings.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+        DisplayGratings.tStart = globalClock.getTime(format='float')
+        DisplayGratings.status = STARTED
+        thisExp.addData('DisplayGratings.started', DisplayGratings.tStart)
+        DisplayGratings.maxDuration = None
         # keep track of which components have finished
-        display_gratingsComponents = display_gratings.components
-        for thisComponent in display_gratings.components:
+        DisplayGratingsComponents = DisplayGratings.components
+        for thisComponent in DisplayGratings.components:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -719,11 +829,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         frameN = -1
         
-        # --- Run Routine "display_gratings" ---
+        # --- Run Routine "DisplayGratings" ---
         # if trial has changed, end Routine now
         if isinstance(trials, data.TrialHandler2) and thisTrial.thisN != trials.thisTrial.thisN:
             continueRoutine = False
-        display_gratings.forceEnded = routineForceEnded = not continueRoutine
+        DisplayGratings.forceEnded = routineForceEnded = not continueRoutine
         while continueRoutine and routineTimer.getTime() < 5.0:
             # get current time
             t = routineTimer.getTime()
@@ -798,8 +908,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     stim_grating.status = FINISHED
                     stim_grating.setAutoDraw(False)
             # Run 'Each Frame' code from read_encoder
-            """jgronemeyer 2024 custom code block"""
-            
+            #================== Custom Codeblock jgronemeyer ================#
             current_time = core.getTime()
             time_interval = current_time - prev_time
             #Time must have passed to collect encoder clicks
@@ -838,10 +947,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             # check if all components have finished
             if not continueRoutine:  # a component has requested a forced-end of Routine
-                display_gratings.forceEnded = routineForceEnded = True
+                DisplayGratings.forceEnded = routineForceEnded = True
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in display_gratings.components:
+            for thisComponent in DisplayGratings.components:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -850,14 +959,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # --- Ending Routine "display_gratings" ---
-        for thisComponent in display_gratings.components:
+        # --- Ending Routine "DisplayGratings" ---
+        for thisComponent in DisplayGratings.components:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # store stop times for display_gratings
-        display_gratings.tStop = globalClock.getTime(format='float')
-        display_gratings.tStopRefresh = tThisFlipGlobal
-        thisExp.addData('display_gratings.stopped', display_gratings.tStop)
+        # store stop times for DisplayGratings
+        DisplayGratings.tStop = globalClock.getTime(format='float')
+        DisplayGratings.tStopRefresh = tThisFlipGlobal
+        thisExp.addData('DisplayGratings.stopped', DisplayGratings.tStop)
         # Run 'End Routine' code from read_encoder
         #save the dataframe trial by trial
         #thisExp.addData('encoder_data', encoder_data)
@@ -869,15 +978,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         #For now, data is exported separately on End Experiment
         #in a .csv
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-        if display_gratings.maxDurationReached:
-            routineTimer.addTime(-display_gratings.maxDuration)
-        elif display_gratings.forceEnded:
+        if DisplayGratings.maxDurationReached:
+            routineTimer.addTime(-DisplayGratings.maxDuration)
+        elif DisplayGratings.forceEnded:
             routineTimer.reset()
         else:
             routineTimer.addTime(-5.000000)
         thisExp.nextEntry()
         
-    # completed 50.0 repeats of 'trials'
+    # completed nTrials repeats of 'trials'
     
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
@@ -894,9 +1003,92 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     trials.saveAsText(filename + 'trials.csv', delim=',',
         stimOut=params,
         dataOut=['n','all_mean','all_std', 'all_raw'])
-    # Run 'End Experiment' code from read_encoder
+    
+    # --- Prepare to start Routine "CustomSaving" ---
+    # create an object to store info about Routine CustomSaving
+    CustomSaving = data.Routine(
+        name='CustomSaving',
+        components=[],
+    )
+    CustomSaving.status = NOT_STARTED
+    continueRoutine = True
+    # update component parameters for each repeat
+    # store start times for CustomSaving
+    CustomSaving.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+    CustomSaving.tStart = globalClock.getTime(format='float')
+    CustomSaving.status = STARTED
+    thisExp.addData('CustomSaving.started', CustomSaving.tStart)
+    CustomSaving.maxDuration = None
+    # keep track of which components have finished
+    CustomSavingComponents = CustomSaving.components
+    for thisComponent in CustomSaving.components:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    frameN = -1
+    
+    # --- Run Routine "CustomSaving" ---
+    CustomSaving.forceEnded = routineForceEnded = not continueRoutine
+    while continueRoutine:
+        # get current time
+        t = routineTimer.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # check for quit (typically the Esc key)
+        if defaultKeyboard.getKeys(keyList=["escape"]):
+            thisExp.status = FINISHED
+        if thisExp.status == FINISHED or endExpNow:
+            endExperiment(thisExp, win=win)
+            return
+        # pause experiment here if requested
+        if thisExp.status == PAUSED:
+            pauseExperiment(
+                thisExp=thisExp, 
+                win=win, 
+                timers=[routineTimer], 
+                playbackComponents=[]
+            )
+            # skip the frame we paused on
+            continue
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            CustomSaving.forceEnded = routineForceEnded = True
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in CustomSaving.components:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # --- Ending Routine "CustomSaving" ---
+    for thisComponent in CustomSaving.components:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # store stop times for CustomSaving
+    CustomSaving.tStop = globalClock.getTime(format='float')
+    CustomSaving.tStopRefresh = tThisFlipGlobal
+    thisExp.addData('CustomSaving.stopped', CustomSaving.tStop)
+    thisExp.nextEntry()
+    # the Routine "CustomSaving" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    # Run 'End Experiment' code from save_encoder_data
     #Export encoder_data to .csv file
-    save_to = u'data/%s/sub-%s/ses-%s/beh' % (expInfo['Protocol ID'], expInfo['Subject ID'], expInfo['Session ID'])
+    #save_to = u'data/%s/sub-%s/ses-%s/beh' % (expInfo['Protocol ID'], expInfo['Subject ID'], expInfo['Session ID'])
+    save_to = f'data/{expInfo['Protocol ID']}/sub-{expInfo['Subject ID']}/ses-{expInfo['Session ID']}/beh'
     new_dir = os.path.join(_thisDir, save_to)
     
     # Create the path if it does not exist
@@ -913,8 +1105,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     filename = os.path.join(new_dir, f"sub-{subject_id}_ses-{session_id}_{timestamp}_wheeldf.csv")
     
     encoder_data.to_csv(filename, index=False)
-    
-    
     
     # mark experiment as finished
     endExperiment(thisExp, win=win)
