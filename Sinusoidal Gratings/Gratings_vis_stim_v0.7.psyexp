@@ -70,7 +70,7 @@
     <Param val="1000" valType="num" updates="None" name="plPupilRemoteTimeoutMs"/>
     <Param val="False" valType="bool" updates="None" name="plPupillometryOnly"/>
     <Param val="psychopy_iohub_surface" valType="str" updates="None" name="plSurfaceName"/>
-    <Param val="1" valType="code" updates="None" name="runMode"/>
+    <Param val="0" valType="code" updates="None" name="runMode"/>
     <Param val="False" valType="bool" updates="None" name="rush"/>
     <Param val="time" valType="str" updates="None" name="sortColumns"/>
     <Param val="" valType="str" updates="None" name="tbLicenseFile"/>
@@ -115,58 +115,6 @@
         <Param val="code_nidaq_sync_pulse" valType="code" updates="None" name="name"/>
       </CodeComponent>
     </Routine>
-    <Routine name="STDINPUT">
-      <RoutineSettingsComponent name="STDINPUT" plugin="None">
-        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
-        <Param val="" valType="str" updates="None" name="backgroundImg"/>
-        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
-        <Param val="lms" valType="str" updates="None" name="colorSpace"/>
-        <Param val="Receive command line arguments from a Parent process when launching this experiment as a a subprocess. This code is meant to circumvent the usual launch of a PsychoPy experiment, forgoing manual entry of subject information into a popup dialog box.&amp;#10;&amp;#10;This block allows standard input system arguments to define:&amp;#10;- BIDS format information for file saving &amp;#10;- the number of stimulus trials calculated in the parent process. &amp;#10;- Save file directory paths" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
-        <Param val="STDINPUT" valType="code" updates="None" name="name"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="constant" name="skipIf"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
-      </RoutineSettingsComponent>
-      <CodeComponent name="get_input_arguments" plugin="None">
-        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;#add system argument functionality&amp;#10;#Get command line arguments passed if present&amp;#10;sysarg_protocol_id = None&amp;#10;sysarg_subject_id = None&amp;#10;sysarg_session_id = None&amp;#10;sysarg_save_dir = None&amp;#10;sysarg_nTrials = None # changed data.TrialHandler2 object value nReps value to call this variable&amp;#10;if len(sys.argv) &gt; 1:&amp;#10;    sysarg_protocol_id = sys.argv[1]  # get the first argument from command line&amp;#10;    sysarg_subject_id = sys.argv[2]  # get the second argument from command line&amp;#10;    sysarg_session_id = sys.argv[3]  # get the third argument from command line&amp;#10;    sysarg_save_dir = sys.argv[4]  # get the fourth argument from command line&amp;#10;    nTrials = sys.argv[5] # get the fifth argument from the command line&amp;#10;    &amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="sysarg_protocol_id = null;&amp;#10;sysarg_subject_id = null;&amp;#10;sysarg_session_id = null;&amp;#10;sysarg_save_dir = null;&amp;#10;sysarg_nTrials = null;&amp;#10;if ((sys.argv.length &gt; 1)) {&amp;#10;    sysarg_protocol_id = sys.argv[1];&amp;#10;    sysarg_subject_id = sys.argv[2];&amp;#10;    sysarg_session_id = sys.argv[3];&amp;#10;    sysarg_save_dir = sys.argv[4];&amp;#10;    nTrials = sys.argv[5];&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="get_input_arguments" valType="code" updates="None" name="name"/>
-      </CodeComponent>
-      <CodeComponent name="prepare_encoder" plugin="None">
-        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================&amp;#10;import serial&amp;#10;import time&amp;#10;from datetime import datetime # for BIDS saving&amp;#10;import pandas as pd&amp;#10;import os&amp;#10;import threading&amp;#10;&amp;#10;# For BIDS file saving&amp;#10;timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)&amp;#10;&amp;#10;# Constants&amp;#10;WHEEL_DIAMETER = 0.2  # in meters, example value&amp;#10;ENCODER_CPR = 1000    # encoder counts per revolution&amp;#10;SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window&amp;#10;SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data&amp;#10;PORT = 'COM4'&amp;#10;&amp;#10;# Set up the serial port connection to arduino&amp;#10;arduino = serial.Serial(port=PORT, baudrate=57600, timeout=1)&amp;#10;&amp;#10;# Initialize DataFrame to store encoder data&amp;#10;columns = ['timestamp', 'speed', 'distance', 'direction']&amp;#10;encoder_data = pd.DataFrame(columns=columns)&amp;#10;&amp;#10;# Shared variable for clicks (raw value received from encoder)&amp;#10;clicks_lock = threading.Lock() #thread locked for synchronization&amp;#10;shared_clicks = 0 #cross-thread accessible variable&amp;#10;&amp;#10;def read_encoder():&amp;#10;    global shared_clicks&amp;#10;    while True:&amp;#10;        try:&amp;#10;            data = arduino.readline().decode('utf-8').strip()&amp;#10;            if data:&amp;#10;                with clicks_lock:&amp;#10;                    shared_clicks = int(data)&amp;#10;        except ValueError:&amp;#10;            pass&amp;#10;&amp;#10;#NOTE: time_interval value should use PsychoPy's core.Clock() &amp;#10;def calculate_metrics(clicks, time_interval):&amp;#10;    rotations = clicks / ENCODER_CPR&amp;#10;    distance = rotations * (3.1416 * WHEEL_DIAMETER)&amp;#10;    speed = distance / time_interval  # m/s&amp;#10;    return speed, distance&amp;#10;&amp;#10;def determine_direction(clicks):&amp;#10;    if clicks == 0:&amp;#10;        return 0  # Stationary&amp;#10;    elif clicks &gt; 0:&amp;#10;        return 1  # Forward&amp;#10;    else:&amp;#10;        return 2  # Backward&amp;#10;&amp;#10;def save_data(timestamp, speed, distance, direction):&amp;#10;    global encoder_data&amp;#10;    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)&amp;#10;    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="prepare_encoder" valType="code" updates="None" name="name"/>
-      </CodeComponent>
-    </Routine>
     <Routine name="CustomSaving">
       <RoutineSettingsComponent name="CustomSaving" plugin="None">
         <Param val="none" valType="str" updates="None" name="backgroundFit"/>
@@ -202,8 +150,60 @@
         <Param val="save_encoder_data" valType="code" updates="None" name="name"/>
       </CodeComponent>
     </Routine>
-    <Routine name="CustomTrigger">
-      <RoutineSettingsComponent name="CustomTrigger" plugin="None">
+    <Routine name="Input_Output">
+      <RoutineSettingsComponent name="Input_Output" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="lms" valType="str" updates="None" name="colorSpace"/>
+        <Param val="Receive command line arguments from a Parent process when launching this experiment as a a subprocess. This code is meant to circumvent the usual launch of a PsychoPy experiment, forgoing manual entry of subject information into a popup dialog box.&amp;#10;&amp;#10;This block allows standard input system arguments to define:&amp;#10;- BIDS format information for file saving &amp;#10;- the number of stimulus trials calculated in the parent process. &amp;#10;- Save file directory paths" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="Input_Output" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
+      <CodeComponent name="get_input_arguments" plugin="None">
+        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;#add system argument functionality&amp;#10;#Get command line arguments passed if present&amp;#10;sysarg_protocol_id = None&amp;#10;sysarg_subject_id = None&amp;#10;sysarg_session_id = None&amp;#10;sysarg_save_dir = None&amp;#10;sysarg_nTrials = None # changed data.TrialHandler2 object value nReps value to call this variable&amp;#10;if len(sys.argv) &gt; 1:&amp;#10;    sysarg_protocol_id = sys.argv[1]  # get the first argument from command line&amp;#10;    sysarg_subject_id = sys.argv[2]  # get the second argument from command line&amp;#10;    sysarg_session_id = sys.argv[3]  # get the third argument from command line&amp;#10;    sysarg_save_dir = sys.argv[4]  # get the fourth argument from command line&amp;#10;    nTrials = sys.argv[5] # get the fifth argument from the command line&amp;#10;    #encoder = sys.argv[6] # TODO: accept encoder parameters&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="sysarg_protocol_id = null;&amp;#10;sysarg_subject_id = null;&amp;#10;sysarg_session_id = null;&amp;#10;sysarg_save_dir = null;&amp;#10;sysarg_nTrials = null;&amp;#10;if ((sys.argv.length &gt; 1)) {&amp;#10;    sysarg_protocol_id = sys.argv[1];&amp;#10;    sysarg_subject_id = sys.argv[2];&amp;#10;    sysarg_session_id = sys.argv[3];&amp;#10;    sysarg_save_dir = sys.argv[4];&amp;#10;    nTrials = sys.argv[5];&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="get_input_arguments" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+      <CodeComponent name="save_bids_format" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;# Sipelab standard BIDS protocol file naming for &amp;#10;#   future batch analysis and data wrangling&amp;#10;protocol_id = expInfo['Protocol ID']&amp;#10;subject_id = expInfo['Subject ID']&amp;#10;session_id = expInfo['Session ID']&amp;#10;timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)&amp;#10;&amp;#10;#save_to = u'data/%s/sub-%s/ses-%s/beh' % (expInfo['Protocol ID'], expInfo['Subject ID'], expInfo['Session ID'])&amp;#10;save_to = f'data/{protocol_id}/sub-{subject_id}/ses-{session_id}/beh'&amp;#10;new_dir = os.path.join(_thisDir, save_to)&amp;#10;&amp;#10;# Create the path if it does not exist&amp;#10;if not os.path.exists(new_dir):&amp;#10;    os.makedirs(new_dir)&amp;#10;&amp;#10;&amp;#10;filename = os.path.join(new_dir, f&quot;sub-{subject_id}_ses-{session_id}_{timestamp}_wheeldf.csv&quot;)&amp;#10;&amp;#10;if encoder_data is not None:&amp;#10;    encoder_data.to_csv(filename, index=False)&amp;#10;else:&amp;#10;    print(&quot;No encoder data in `encorder_data`&quot;)&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="save_bids_format" valType="code" updates="None" name="name"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="Custom_Trigger">
+      <RoutineSettingsComponent name="Custom_Trigger" plugin="None">
         <Param val="none" valType="str" updates="None" name="backgroundFit"/>
         <Param val="" valType="str" updates="None" name="backgroundImg"/>
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
@@ -212,7 +212,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
-        <Param val="CustomTrigger" valType="code" updates="None" name="name"/>
+        <Param val="Custom_Trigger" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="constant" name="skipIf"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
@@ -267,8 +267,8 @@
         <Param val="True" valType="bool" updates="constant" name="syncScreenRefresh"/>
       </KeyboardComponent>
     </Routine>
-    <Routine name="DisplayGratings">
-      <RoutineSettingsComponent name="DisplayGratings" plugin="None">
+    <Routine name="Display_Gratings">
+      <RoutineSettingsComponent name="Display_Gratings" plugin="None">
         <Param val="none" valType="str" updates="None" name="backgroundFit"/>
         <Param val="" valType="str" updates="None" name="backgroundImg"/>
         <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
@@ -277,7 +277,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
-        <Param val="DisplayGratings" valType="code" updates="None" name="name"/>
+        <Param val="Display_Gratings" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="constant" name="skipIf"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
@@ -361,14 +361,14 @@
         <Param val="" valType="code" updates="None" name="validator"/>
       </GratingComponent>
       <CodeComponent name="read_encoder" plugin="None">
-        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================&amp;#10;import serial&amp;#10;import time&amp;#10;from datetime import datetime # for BIDS saving&amp;#10;import pandas as pd&amp;#10;import os&amp;#10;import threading&amp;#10;import math&amp;#10;&amp;#10;# For BIDS file saving&amp;#10;timestamp = datetime.now().strftime('%Y%m%d_%H%M%S') # get current timestamp (BIDS)&amp;#10;&amp;#10;# Constants&amp;#10;WHEEL_DIAMETER = 0.2  # in meters, example value&amp;#10;ENCODER_CPR = 1000    # encoder counts per revolution&amp;#10;SAMPLE_WINDOW = 0.05  # sample window in seconds, matching the Arduino sample window&amp;#10;SAVE_DIR = r'C:/dev/devOutput/encoder'  # Directory to save data&amp;#10;PORT = 'COM4'&amp;#10;&amp;#10;# Set up the serial port connection to arduino&amp;#10;arduino = serial.Serial(port=PORT, baudrate=57600, timeout=1)&amp;#10;&amp;#10;# Initialize DataFrame to store encoder data&amp;#10;columns = ['timestamp', 'speed', 'distance', 'direction']&amp;#10;encoder_data = pd.DataFrame(columns=columns)&amp;#10;&amp;#10;# Shared variable for clicks (raw value received from encoder)&amp;#10;clicks_lock = threading.Lock() #thread locked for synchronization&amp;#10;shared_clicks = 0 #cross-thread accessible variable&amp;#10;&amp;#10;def read_encoder():&amp;#10;    global shared_clicks&amp;#10;    while True:&amp;#10;        try:&amp;#10;            data = arduino.readline().decode('utf-8').strip()&amp;#10;            if data:&amp;#10;                with clicks_lock:&amp;#10;                    shared_clicks = int(data)&amp;#10;        except ValueError:&amp;#10;            pass&amp;#10;&amp;#10;#NOTE: time_interval value should use PsychoPy's core.Clock() &amp;#10;def calculate_metrics(clicks, time_interval):&amp;#10;    rotations = clicks / ENCODER_CPR&amp;#10;    distance = rotations * (math.pi * WHEEL_DIAMETER)&amp;#10;    speed = distance / time_interval  # m/s&amp;#10;    return speed, distance&amp;#10;&amp;#10;def determine_direction(clicks):&amp;#10;    if clicks == 0:&amp;#10;        return 0  # Stationary&amp;#10;    elif clicks &gt; 0:&amp;#10;        return 1  # Forward&amp;#10;    else:&amp;#10;        return 2  # Backward&amp;#10;&amp;#10;def save_data(timestamp, speed, distance, direction):&amp;#10;    global encoder_data&amp;#10;    new_data = pd.DataFrame([[timestamp, speed, distance, direction]], columns=encoder_data.columns)&amp;#10;    encoder_data = pd.concat([encoder_data, new_data], ignore_index=True)&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;total_distance = 0&amp;#10;&amp;#10;# Start the encoder reading thread&amp;#10;encoder_thread = threading.Thread(target=read_encoder, daemon=True)&amp;#10;encoder_thread.start()&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="total_distance = 0;&amp;#10;encoder_thread = new threading.Thread({&quot;target&quot;: read_encoder, &quot;daemon&quot;: true});&amp;#10;encoder_thread.start();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="prev_time = core.getTime();&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;# This value provides the encoder thread with &amp;#10;#   the timestamp for the start of each Routine&amp;#10;prev_time = core.getTime()&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;current_time = core.getTime()&amp;#10;time_interval = current_time - prev_time&amp;#10;#Time must have passed to collect encoder clicks&amp;#10;if time_interval &gt;= SAMPLE_WINDOW:&amp;#10;    with clicks_lock:&amp;#10;        clicks = shared_clicks&amp;#10;&amp;#10;    speed, distance = calculate_metrics(clicks, time_interval)&amp;#10;    total_distance += distance&amp;#10;    direction = determine_direction(clicks)&amp;#10;&amp;#10;    timestamp = current_time&amp;#10;    save_data(timestamp, speed, total_distance, direction)&amp;#10;    &amp;#10;    #comment out/in for debugging&amp;#10;    print(f&quot;Time: {timestamp:.2f}s, Speed: {speed:.2f} m/s, Total Distance: {total_distance:.2f} m, Direction: {direction}&quot;)&amp;#10;&amp;#10;    prev_time = current_time&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="#=============================== Custom Codeblock jgronemeyer =====================================#&amp;#10;current_time = core.getTime()&amp;#10;time_interval = current_time - prev_time&amp;#10;#Time must have passed to collect encoder clicks&amp;#10;if time_interval &gt;= SAMPLE_WINDOW:&amp;#10;    with clicks_lock:&amp;#10;        clicks = shared_clicks&amp;#10;&amp;#10;    speed, distance = calculate_metrics(clicks, time_interval)&amp;#10;    total_distance += distance&amp;#10;    direction = determine_direction(clicks)&amp;#10;&amp;#10;    timestamp = current_time&amp;#10;    save_data(timestamp, speed, total_distance, direction)&amp;#10;    &amp;#10;    #comment out/in for debugging real-time output&amp;#10;    print(f&quot;Time: {timestamp:.2f}s, Speed: {speed:.2f} m/s, Total Distance: {total_distance:.2f} m, Direction: {direction}&quot;)&amp;#10;&amp;#10;    prev_time = current_time&amp;#10;#==================================================================================================#" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="/* Syntax Error: Fix Python code */" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
@@ -380,8 +380,8 @@
     </Routine>
   </Routines>
   <Flow>
-    <Routine name="STDINPUT"/>
-    <Routine name="CustomTrigger"/>
+    <Routine name="Input_Output"/>
+    <Routine name="Custom_Trigger"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -393,8 +393,7 @@
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
-    <Routine name="DisplayGratings"/>
+    <Routine name="Display_Gratings"/>
     <LoopTerminator name="trials"/>
-    <Routine name="CustomSaving"/>
   </Flow>
 </PsychoPy2experiment>

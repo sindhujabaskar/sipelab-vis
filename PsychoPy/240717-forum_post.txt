@@ -1,7 +1,0 @@
-I am using PyschoPy for visual presentations in the context of animal research. I am presenting visual gratings and collecting locomotion via serial input from a rotary encoder through an arduino.
-
-So far, I have a read_encoder function that collects the raw input from my arduino. The read_encoder is a thread-locked function that streams values to a global variable. Each frame, I have PsychoPy access that global variable for calcuulations. 
-
-I am relatively new to threading and the backend of PsychoPy. I am looking for advice on using PsychoPy experiments to collect concurrent streams of data synchronized to the core.Clock().
-
-So far, the data is written to disk as a .csv; 
